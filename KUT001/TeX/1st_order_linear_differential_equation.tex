@@ -161,33 +161,33 @@ urk.fei.stuba.sk
 
 Diferenciálnu rovnicu prvého rádu môžeme zapísať vo všeobecnom tvare:
 \begin{equation}
-    \label{1stOderLODE.Equation:1stOrderLinearDifferentialEquation}
+    \label{1stOderLDE.Equation:1stOrderLinearDifferentialEquation}
     \dot{x}(t) = a(t) x(t) + b(t) u(t)
 \end{equation}
-kde $a(t)$ a $b(t)$ sú koeficienty, ktoré sú premenlivé (závisia od premennej $t$ v ponímaní modelovania systémov môže predstavovať čas) a $u(t)$ je funkcia závislá od $t$. V prípade modelovania systémov predstavuje vstup do systému. Cieľom riešenia diferenciálnej rovnice (\ref{1stOderLODE.Equation:1stOrderLinearDifferentialEquation}) je nájsť také funkcie $x(t)$, ktoré túto rovnicu spĺňajú. Opäť v prípade modelovania systémov $x(t)$ predstavuje stav systému.
+kde $a(t)$ a $b(t)$ sú koeficienty, ktoré sú premenlivé (závisia od premennej $t$ v ponímaní modelovania systémov môže predstavovať čas) a $u(t)$ je funkcia závislá od $t$. V prípade modelovania systémov predstavuje vstup do systému. Cieľom riešenia diferenciálnej rovnice (\ref{1stOderLDE.Equation:1stOrderLinearDifferentialEquation}) je nájsť také funkcie $x(t)$, ktoré túto rovnicu spĺňajú. Opäť v prípade modelovania systémov $x(t)$ predstavuje stav systému.
 
 Keďže riešime lineárnu diferenciálnu rovnicu jej všeobecné riešenie môžeme nájsť poskladaním čiastkových riešení:
 \begin{equation}
-    \label{1stOderLODE.Equation:SolutionLinearCombination}
+    \label{1stOderLDE.Equation:SolutionLinearCombination}
     x(t) = x_h(t) + x_p(t)
 \end{equation}
 kde $x_h$ sa nazýva homogénne riešenie a získame ho riešením zhomogenizovanej rovnice. Riešenie $x_p$ je partikulárne riešenie, ktoré môžeme získať metódou variácie konštánt.
 
-Najskôr získame homogénne riešenie. Rovnicu (\ref{1stOderLODE.Equation:1stOrderLinearDifferentialEquation}) zhomogenizujeme tým, že uvažujeme $u(t) = 0$:
+Najskôr získame homogénne riešenie. Rovnicu (\ref{1stOderLDE.Equation:1stOrderLinearDifferentialEquation}) zhomogenizujeme tým, že uvažujeme $u(t) = 0$:
 \begin{equation}
-    \label{1stOderLODE.Equation:1stOrderLinearDifferentialEquationHomogeneous}
+    \label{1stOderLDE.Equation:1stOrderLinearDifferentialEquationHomogeneous}
     \dot{x}_h(t) = a(t) x_h(t)
 \end{equation}
 
-\noindent Zhomogenizovaná rovnica (\ref{1stOderLODE.Equation:1stOrderLinearDifferentialEquationHomogeneous}) je separovateľná:
+\noindent Zhomogenizovaná rovnica (\ref{1stOderLDE.Equation:1stOrderLinearDifferentialEquationHomogeneous}) je separovateľná:
 \begin{equation}
-    \label{1stOderLODE.Equation:1stOrderLinearDifferentialEquationHomogeneousSeparated}
+    \label{1stOderLDE.Equation:1stOrderLinearDifferentialEquationHomogeneousSeparated}
     \der{x_h(t)}{t} = a(t) x_h(t) \longrightarrow \frac{dx(t)}{x_h(t)} = a(t)dt
 \end{equation}
 
-\noindent Následne integrujeme obidve strany rovnice (\ref{1stOderLODE.Equation:1stOrderLinearDifferentialEquationHomogeneousSeparated}):
+\noindent Následne integrujeme obidve strany rovnice (\ref{1stOderLDE.Equation:1stOrderLinearDifferentialEquationHomogeneousSeparated}):
 \begin{equation}
-    \label{1stOrderLODE.Equation:HomogeneousIntegral}
+    \label{1stOrderLDE.Equation:HomogeneousIntegral}
     \ln \left( |x_h(t_f)| \right) + K = \int_{t_i}^{t_f} a(t) \, dt
 \end{equation}
 Integráciu realizujeme na intervale $\left< t_i, t_f \right>$, zaviedli sme konštantu $K$, ktorá vyjadruje stav v $t_i$.
@@ -201,39 +201,39 @@ keďže $K$ je konštanta a rovnako aj ''$\exp$'' tak môžeme zaviesť novú ko
     L = \exp(-K)
 \end{equation}
 
-Riešenie zhomogenizovanej rovnice (\ref{1stOderLODE.Equation:1stOrderLinearDifferentialEquationHomogeneous}) má teda tvar:
+Riešenie zhomogenizovanej rovnice (\ref{1stOderLDE.Equation:1stOrderLinearDifferentialEquationHomogeneous}) má teda tvar:
 \begin{equation}
-    \label{1stOderLODE.Equation:HomogeneousSolution}
+    \label{1stOderLDE.Equation:HomogeneousSolution}
     x_h(t_f) = L \exp \left( \int_{t_i}^{t_f} a(t) \, dt \right)
 \end{equation}
 
-Teraz prejdeme na vyjadrenie partikulárneho riešenia. Predpokladáme, že bude v rovnakom tvare ako homogénne riešenie (\ref{1stOderLODE.Equation:HomogeneousSolution}):
+Teraz prejdeme na vyjadrenie partikulárneho riešenia. Predpokladáme, že bude v rovnakom tvare ako homogénne riešenie (\ref{1stOderLDE.Equation:HomogeneousSolution}):
 \begin{equation}
-    \label{1stOderLODE.Equation:ParticularSolutionForm}
+    \label{1stOderLDE.Equation:ParticularSolutionForm}
     x_p(t) = L(t) \exp \left( \int_{t_i}^{t} a(\tau) \, d\tau \right)
 \end{equation}
 Avšak, pripustíme, že ''konštanta'' $L$ nie je konštantou ale je variabilná (variácia konštánt). Táto variabilita má zohľadniť vplyv $u$, ktorý sme v homogénnom riešení vypustili.
 
-Partikulárne riešenie (\ref{1stOderLODE.Equation:ParticularSolutionForm}) zderivujeme:
+Partikulárne riešenie (\ref{1stOderLDE.Equation:ParticularSolutionForm}) zderivujeme:
 \begin{equation}
     \dot{x}_p(t) = 
     \dot{L}(t) \exp \left( \int_{t_i}^{t} a(\tau) \, d\tau \right) + 
     L(t) a(t) \exp \left( \int_{t_i}^{t} a(\tau) \, d\tau \right)
 \end{equation}
-a dosadíme do (\ref{1stOderLODE.Equation:1stOrderLinearDifferentialEquation}). Po úpravách dostaneme:
+a dosadíme do (\ref{1stOderLDE.Equation:1stOrderLinearDifferentialEquation}). Po úpravách dostaneme:
 \begin{equation}
     \dot{L}(t)  = 
     \exp \left( -\int_{t_i}^{t} a(\tau) \, d\tau \right) b(t) u(t)
 \end{equation}
 a po integrácii:
 \begin{equation}
-    \label{1stOderLODE.Equation:ConstantVariation}
+    \label{1stOderLDE.Equation:ConstantVariation}
     L(t_f) + M = \int_{t_i}^{t_f} \exp \left( -\int_{t_i}^{t} a(\tau) \, d\tau \right) b(t) u(t) \, dt
 \end{equation}
 
-\noindent Nakoniec dosadením (\ref{1stOderLODE.Equation:ConstantVariation}) do (\ref{1stOderLODE.Equation:ParticularSolutionForm}) ešte vyjadríme partikulárne riešenie $x_p$ v bode $t_f$:
+\noindent Nakoniec dosadením (\ref{1stOderLDE.Equation:ConstantVariation}) do (\ref{1stOderLDE.Equation:ParticularSolutionForm}) ešte vyjadríme partikulárne riešenie $x_p$ v bode $t_f$:
 \begin{align}
-    \label{1stOderLODE.Equation:ParticularSolution}
+    \label{1stOderLDE.Equation:ParticularSolution}
     \nonumber
     x_p(t_f) &= 
     N \exp \left( \int_{t_i}^{t_f} a(\tau) \, d\tau \right) \\ &+ 
@@ -241,7 +241,7 @@ a po integrácii:
 \end{align}
 kde $N$ je konštanta $N = -M$.
 
-Získané homogénne (\ref{1stOderLODE.Equation:HomogeneousSolution}) a partikulárne (\ref{1stOderLODE.Equation:ParticularSolution}) riešenie teraz sčítame podľa (\ref{1stOderLODE.Equation:SolutionLinearCombination}):
+Získané homogénne (\ref{1stOderLDE.Equation:HomogeneousSolution}) a partikulárne (\ref{1stOderLDE.Equation:ParticularSolution}) riešenie teraz sčítame podľa (\ref{1stOderLDE.Equation:SolutionLinearCombination}):
 \begin{align}
     \nonumber
     x(t_f) &= 
@@ -260,9 +260,23 @@ kde sme zaviedli $C = L - N$, pretože všetko sú to konštanty a môžeme ich 
 
 \section{Sústava lineárnych diferenciálnych rovníc 1. rádu}
 
+Rovnako môžeme postupovať aj v prípade sústavy diferenciálnych rovníc 1.~rádu:
 \begin{equation}
-    \dot{\bm{x}}(t) = \bm{A}(t) \bm{x}(t) + \bm{B}(t) \bm{u}(t)
+    \label{SystemLDE:StateSpace}
+    \dot{\bm{x}}(t) = \bm{A} \bm{x}(t) + \bm{B} \bm{u}(t)
 \end{equation}
+Tento tvar je zámerne zhodný s tvarom stavového modelu. Matice $\bm{A}$ a $\bm{B}$ sú konštantné, pretože v prípade, že by boli časovo premenlivé tak neexistuje analytické riešenie. Maticový exponent vieme rozpísať do mocninového radu:
+\begin{equation}
+    \exp(\bm{M}) = \sum_{n = 0}^{\infty} \frac{\bm{M}^n}{n!}
+\end{equation}
+
+A teda analytické riešenie sústavy diferenciálnych rovníc 1. rádu (\ref{SystemLDE:StateSpace}) má tvar:
+\begin{equation}
+    \bm{x}(t_f) = 
+    \bm{x}(t_i) \exp \left( \bm{A} (t_f - t_i) \right) + 
+    \int_{t_i}^{t_f} \exp \left( \bm{A} (t_f - t) \right) \bm{B} \bm{u}(t) \, dt 
+\end{equation}
+
 
 
 
