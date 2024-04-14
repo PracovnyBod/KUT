@@ -1,0 +1,178 @@
+\documentclass[a4paper, 10pt, ]{article}
+
+\input{../../COMMONFILES/preamble.tex}
+
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\makeatletter
+\renewcommand{\ALG@name}{Algoritmus}
+\makeatother
+
+\newcommand{\mr}[1]{\mathrm{#1}}
+\newcommand{\bm}[1]{\mathbf{#1}}
+\newcommand{\bs}[1]{\boldsymbol{#1}}
+\newcommand{\der}[2]{\frac{d #1}{d #2}}
+\newcommand{\diff}[2]{\frac{\Delta #1}{\Delta #2}}
+\newcommand{\parder}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\argmax}[0]{\mr{argmax}}
+\newcommand{\trace}[0]{\mr{tr}}
+\newcommand{\diag}[0]{\mr{diag}}
+
+\def\oznacenieCasti{AR02 - LS2024 - DifRov}
+
+% -----------------------------------------------------------------------------
+
+\def\oznacenieCelku{Kolekcia učebných textov}
+
+% -----------------------------------------------------------------------------
+
+\def\KUTporadoveCislo{002}
+
+% \def\oznacenieVerzie{v1.0}
+\def\oznacenieVerzie{\phantom{v1.0}}
+
+\def\mesiacRok{február 2024}
+
+\def\authorslabel{}
+
+% -----------------------------------------------------------------------------
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definícia}[section]
+\newtheorem{theorem}{Veta}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{example}{Príklad}[section]
+\renewcommand*{\proofname}{Dôkaz}
+
+
+
+
+
+
+% -----------------------------------------------------------------------------
+
+\begin{document}
+
+
+% -----------------------------------------------------------------------------
+% Uvodny nadpis
+
+\noindent
+\parbox[t][18mm][c]{0.3\textwidth}{%
+\raisebox{-0.9\height}{%
+\phantom{.}\includegraphics[height=18mm]{../../COMMONFILES/URKFEIlogo.pdf}%
+}%
+}%
+\parbox[t][18mm][c]{0.7\textwidth}{%
+\raggedleft
+
+
+
+\sffamily
+\fontsize{16pt}{18pt}
+\fontseries{sbc}
+\selectfont
+
+\noindent
+\textcolor[rgb]{0.75, 0.75, 0.75}{\textls[30]{\oznacenieCelku}}
+}%
+
+\noindent
+\parbox[t][16mm][b]{0.5\textwidth}{%
+\raggedright
+
+\color{Gray}
+\sffamily
+
+
+\fontsize{8pt}{10pt}
+\selectfont
+
+\authorslabel
+
+\fontsize{6pt}{10pt}
+\selectfont
+
+urk.fei.stuba.sk
+
+\fontsize{12pt}{12pt}
+\selectfont
+\mesiacRok
+
+
+}%
+\parbox[t][16mm][b]{0.5\textwidth}{%
+\raggedleft
+
+\sffamily
+% \color{Gray}
+% \lstyle 
+
+\fontsize{6pt}{6pt}
+\selectfont
+
+\textcolor[rgb]{0.68, 0.68, 0.68}{\oznacenieVerzie}
+
+% \textcolor[rgb]{0.68, 0.68, 0.68}{počet strán: \pageref{LastPage}}
+
+\fontsize{14pt}{14pt}
+% \fontseries{sbc}
+\selectfont
+
+\bfseries
+
+\includegraphics[height=12pt]{../../COMMONFILES/KUT_logo_v0.1.pdf}%
+% \oznacenieCasti%
+{%
+% \lstyle
+% \pstyle
+\textls[-50]{\KUTporadoveCislo}
+}%
+
+}%
+
+% -----------------------------------------------------------------------------
+
+
+
+
+\vspace{6mm}
+
+% ---------------------------------------------
+\sffamily
+\bfseries
+\fontsize{18pt}{21pt}
+\selectfont
+
+\begin{flushleft}
+	O vektorových priestoroch
+\end{flushleft}
+
+\bigskip
+
+% -----------------------------------------------------------------------------
+\normalsize
+\normalfont
+% -----------------------------------------------------------------------------
+
+\section{Vektorový priestor}
+\label{VectorSpace}
+
+\begin{definition}[Vektorový priestor]
+	Vektorový priestor $V$ nad polom $K$ je neprázdna množina s dvomi definovanými operáciami $\oplus$ a $\odot$, ktorá spĺňa nasledujúcich 8 axiómov:
+	\begin{enumerate}
+		\item Asociatívnosť: $\bm{u} \oplus (\bm{v} \oplus \bm{w}) = (\bm{u} \oplus \bm{v}) \oplus \bm{w} $
+		\item Komutatívnosť: $\bm{u} \oplus \bm{v} = \bm{v} \oplus \bm{u} $
+		\item Identita: $\bm{u} \oplus \bm{0} = \bm{u}$
+		\item Inverzný prvok: $\bm{u} \oplus \bm{v} = \bm{0}$
+		\item $\alpha \odot (\beta \odot \bm{u}) = (\alpha \beta) \odot \bm{u}$
+		\item $1 \odot \bm{u} = \bm{u}$
+		\item Distributívnosť: $\alpha \odot (\bm{u} \oplus \bm{v}) = \alpha \odot \bm{u} \oplus \alpha \odot \bm{v}$
+		\item Distributívnosť: $(\alpha \oplus \beta) \odot \bm{u} = \alpha \odot \bm{u} \oplus \beta \odot \bm{u}$
+	\end{enumerate}
+    
+\end{definition}
+
+
+
+\end{document}
