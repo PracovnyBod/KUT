@@ -4,6 +4,9 @@
 
 \usepackage{algorithm}
 \usepackage[noend]{algpseudocode}
+\usepackage{bbold}
+\usepackage{dsfont}
+\usepackage{tabto}
 \makeatletter
 \renewcommand{\ALG@name}{Algoritmus}
 \makeatother
@@ -145,7 +148,7 @@ urk.fei.stuba.sk
 \selectfont
 
 \begin{flushleft}
-	O vektorových priestoroch
+    O vektorových priestoroch
 \end{flushleft}
 
 \bigskip
@@ -159,19 +162,116 @@ urk.fei.stuba.sk
 \label{VectorSpace}
 
 \begin{definition}[Vektorový priestor]
-	Vektorový priestor $V$ nad polom $K$ je neprázdna množina s dvomi definovanými operáciami $\oplus$ a $\odot$, ktorá spĺňa nasledujúcich 8 axiómov:
-	\begin{enumerate}
-		\item Asociatívnosť: $\bm{u} \oplus (\bm{v} \oplus \bm{w}) = (\bm{u} \oplus \bm{v}) \oplus \bm{w} $
-		\item Komutatívnosť: $\bm{u} \oplus \bm{v} = \bm{v} \oplus \bm{u} $
-		\item Identita: $\bm{u} \oplus \bm{0} = \bm{u}$
-		\item Inverzný prvok: $\bm{u} \oplus \bm{v} = \bm{0}$
-		\item $\alpha \odot (\beta \odot \bm{u}) = (\alpha \beta) \odot \bm{u}$
-		\item $1 \odot \bm{u} = \bm{u}$
-		\item Distributívnosť: $\alpha \odot (\bm{u} \oplus \bm{v}) = \alpha \odot \bm{u} \oplus \alpha \odot \bm{v}$
-		\item Distributívnosť: $(\alpha \oplus \beta) \odot \bm{u} = \alpha \odot \bm{u} \oplus \beta \odot \bm{u}$
-	\end{enumerate}
-    
+    \label{VectorSpace.Definition:VectorSpace}
+    Vektorový priestor $V$ nad poľom $K$ je neprázdna množina s dvomi definovanými operáciami $\oplus: V \times V \rightarrow V$  a $\odot: K \times V \rightarrow V$, ktorá spĺňa nasledujúcich 8 axiómov:
+    \begin{enumerate}
+        \TabPositions{1cm}
+        \item Asociatívnosť: \\
+        \tab\tab $\bm{u} \oplus (\bm{v} \oplus \bm{w}) = (\bm{u} \oplus \bm{v}) \oplus \bm{w}, \quad \bm{u}, \bm{v}, \bm{w} \in V$
+        
+        \item Komutatívnosť: \\
+        \tab\tab $\bm{u} \oplus \bm{v} = \bm{v} \oplus \bm{u}, \quad \bm{u}, \bm{v} \in V$
+        
+        \item Prvok identity vektorového súčtu: \\
+        \tab\tab $\bm{u} \oplus \bm{0} = \bm{u}, \quad \bm{u}, \bm{0} \in V$
+        
+        \item Inverzný prvok: \\
+        \tab\tab $\bm{u} \oplus \bm{v} = \bm{0}, \quad \bm{u}, \bm{v}, \bm{0} \in V$
+        
+        \item Kompatibilita skalárneho násobenia s násobením poľa \\
+        \tab\tab $\alpha \odot (\beta \odot \bm{u}) = (\alpha \beta) \odot \bm{u}, \quad \alpha, \beta \in K, \quad \bm{u} \in V$
+        
+        \item Prvok identity skalárneho násobenia: \\
+        \tab\tab $\mathbb{1} \odot \bm{u} = \bm{u}, \quad \mathbb{1} \in K, \quad \bm{u} \in V$
+        
+        \item Distributívnosť vzhľadom na vektorový súčet: \\
+        \tab\tab $\alpha \odot (\bm{u} \oplus \bm{v}) = \alpha \odot \bm{u} \oplus \alpha \odot \bm{v}, \quad \alpha \in K, \quad \bm{u}, \bm{v} \in V$
+        
+        \item Distributívnosť vzhľadom na súčet poľa: \\
+        \tab\tab $(\alpha + \beta) \odot \bm{u} = \alpha \odot \bm{u} \oplus \beta \odot \bm{u}, \quad \alpha, \beta \in K, \quad \bm{u} \in V$
+    \end{enumerate}
 \end{definition}
+
+V definícii (\ref{VectorSpace.Definition:VectorSpace}) sme zámerne označili operácie $+$ a $\cdot$ v krúžku, aby sme ich rozlíšili od štandardne definovaného súčtu a súčinu, je možné ale používať aj označenie bez krúžku. Prvky $\bm{0}$ a $\mathbb{1}$ sú špeciálne a pre každý vektorový priestor originálne, nemusia nutne zodpovedať číselnej $0$ a $1$.
+
+\begin{example}
+    Vyšetrite či komplexné čísla $\bm{z} = \alpha + i \beta$ so štandardne definovanými operáciami $+, \cdot$ tvoria vektorový priestor $V$ nad reálnymi číslami $\mathbb{R}$, $\bm{z} \in V$, $\alpha, \beta \in \mathbb{R}$.
+
+    \begin{enumerate}
+        \item
+        \begin{align*}
+            \alpha_1 + i \beta_1 + (\alpha_2 + i \beta_2 + \alpha_3 + i \beta_3) &= 
+            \alpha_1 + i \beta_1 + (\alpha_2 + \alpha_3 + i (\beta_2 + \beta_3)) \\ &= 
+            \alpha_1 + \alpha_2 + \alpha_3 + i (\beta_1 + \beta_2 + \beta_3) \\ 
+            (\alpha_1 + i \beta_1 + \alpha_2 + i \beta_2) + \alpha_3 + i \beta_3 &= 
+            (\alpha_1 + \alpha_2 i (\beta_1 + \beta_2)) + \alpha_3 + i\beta_3 \\ &= 
+            \alpha_1 + \alpha_2 + \alpha_3 + i (\beta_1 + \beta_2 + \beta_3) 
+        \end{align*}
+        
+        \item
+        \begin{align*}
+            \alpha_1 + i \beta_1 + \alpha_2 + i \beta_2 &= 
+            \alpha_1 + \alpha_2 + i (\beta_1 + \beta_2) \\ 
+            \alpha_2 + i \beta_2 + \alpha_1 + i \beta_1&= 
+            \alpha_2 + \alpha_1 + i (\beta_2 + \beta_1) \\ &= 
+            \alpha_1 + \alpha_2 + i (\beta_1 + \beta_2) 
+        \end{align*}
+
+        \item
+        \begin{align*}
+            &\alpha + i \beta + o_r + i o_i = 
+            \alpha + i \beta \\ 
+            &\alpha + o_r = \alpha \ \Longrightarrow \ o_r = 0 \\
+            &\beta + o_i = \beta \ \Longrightarrow \ o_i = 0 \\
+            & \bm{0} = 0 + i0 
+        \end{align*}
+
+        \item
+        \begin{align*}
+            &\alpha_1 + i \beta_1 + \alpha_2 + i\beta_2 = 0 + i0 \\
+            &\alpha_1 + \alpha_2 = 0 \ \Longrightarrow \ \alpha_1 = -\alpha_2 \\
+            &\beta_1 + \beta_2 = 0 \ \Longrightarrow \ \beta_1 = -\beta_2 \\
+            & \bm{z} + (-\bm{z}) = \bm{0} 
+        \end{align*}
+
+        \item
+        \begin{align*}
+            \mu (\nu (\alpha + i \beta)) &= \mu (\nu \alpha + i \nu \beta)) = \mu \nu \alpha + i \mu \nu \beta \\
+            (\mu \nu) (\alpha + i \beta) &= \mu \nu \alpha + i \mu \nu \beta \\
+            \mu \nu \in \mathbb{R}
+        \end{align*}
+
+        \item
+        \begin{align*}
+            &\mathbb{1} \alpha + i \mathbb{1} \beta = \alpha + i \beta \\
+            &\mathbb{1} \alpha = \alpha \ \Longrightarrow \ \mathbb{1} = 1 \\
+            &\mathbb{1} \beta = \beta \ \Longrightarrow \ \mathbb{1} = 1 \\
+            &\mathbb{1} = 1 
+        \end{align*}
+
+        \item
+        \begin{align*}
+            \mu (\alpha_1 + i \beta_1 + \alpha_2 + i\beta_2) &= 
+            \mu (\alpha_1 + \alpha_2 + i (\beta_1 + \beta_2)) \\ &= 
+            \mu(\alpha_1 + \alpha_2) + i \mu (\beta_1 + \beta_2) \\ & = 
+            \mu \alpha_1 + \mu \alpha_2 + i (\mu \beta_1 + \mu \beta_2) \\ 
+            \mu (\alpha_1 + i \beta_1) + \mu (\alpha_2 + i \beta_2) &= 
+            \mu \alpha_1 + i \mu \beta_1 + \mu \alpha_2 + i \mu \beta_2 \\ &=
+            \mu \alpha_1 + \mu \alpha_2 + i (\mu \beta_1 + \mu \beta_2)  
+        \end{align*}
+
+        \item
+        \begin{align*}
+            (\mu + \nu) (\alpha + i \beta) &= 
+            (\mu + \nu) \alpha + i (\mu + \nu) \beta \\ &=
+            \mu \alpha + \nu \alpha + i (\mu \beta + \nu \beta) \\
+            \mu (\alpha + i \beta) + \nu (\alpha + i \beta) &= 
+            \mu \alpha + i \mu \beta + \nu \alpha + i \nu \beta \\ &=
+            \mu \alpha + \nu \alpha + i (\mu \beta + \nu \beta)  
+        \end{align*}
+    \end{enumerate}
+    Vidíme, že všetky axiómy sú splnené a môžeme teda tvrdiť, že komplexné čísla tvoria vektorový priestor nad reálnymi číslami.
+\end{example}
 
 
 
