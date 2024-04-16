@@ -132,22 +132,26 @@
 \makeatletter
 \renewcommand{\ALG@name}{Algoritmus}
 \makeatother
-\usepackage{amsmath,calc}
+\usepackage{amsmath}
 \usepackage{bbold}
+\usepackage{calc}
 \usepackage{dsfont}
 \usepackage{mathtools}
 \usepackage{tabto}
 
 
 \newcommand{\mr}[1]{\mathrm{#1}}
-\newcommand{\bm}[1]{\mathbf{#1}}
 \newcommand{\bs}[1]{\boldsymbol{#1}}
-\newcommand{\der}[2]{\frac{d #1}{d #2}}
+\newcommand{\bm}[1]{\mathbf{#1}}
+
 \newcommand{\diff}[2]{\frac{\Delta #1}{\Delta #2}}
+\newcommand{\der}[2]{\frac{d #1}{d #2}}
 \newcommand{\parder}[2]{\frac{\partial #1}{\partial #2}}
+
 \newcommand{\argmax}[0]{\mr{argmax}}
-\newcommand{\trace}[0]{\mr{tr}}
 \newcommand{\diag}[0]{\mr{diag}}
+\newcommand{\rank}[0]{\mr{rank}}
+\newcommand{\trace}[0]{\mr{tr}}
 
 
 \theoremstyle{definition}
