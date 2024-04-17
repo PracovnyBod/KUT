@@ -1,0 +1,249 @@
+\documentclass[a4paper, 10pt, ]{article}
+
+\input{../../COMMONFILES/preamble.tex}
+
+% -----------------------------------------------------------------------------
+
+\def\oznacenieCelku{Kolekcia učebných textov}
+
+% -----------------------------------------------------------------------------
+
+\def\KUTporadoveCislo{002}
+
+% \def\oznacenieVerzie{v1.0}
+\def\oznacenieVerzie{\phantom{v1.0}}
+
+\def\mesiacRok{február 2024}
+
+\def\authorslabel{}
+
+
+
+
+
+
+% -----------------------------------------------------------------------------
+
+\begin{document}
+
+
+% -----------------------------------------------------------------------------
+% Uvodny nadpis
+
+\noindent
+\parbox[t][18mm][c]{0.3\textwidth}{%
+\raisebox{-0.9\height}{%
+\phantom{.}\includegraphics[height=18mm]{../../COMMONFILES/URKFEIlogo.pdf}%
+}%
+}%
+\parbox[t][18mm][c]{0.7\textwidth}{%
+\raggedleft
+
+
+
+\sffamily
+\fontsize{16pt}{18pt}
+\fontseries{sbc}
+\selectfont
+
+\noindent
+\textcolor[rgb]{0.75, 0.75, 0.75}{\textls[30]{\oznacenieCelku}}
+}%
+
+\noindent
+\parbox[t][16mm][b]{0.5\textwidth}{%
+\raggedright
+
+\color{Gray}
+\sffamily
+
+
+\fontsize{8pt}{10pt}
+\selectfont
+
+\authorslabel
+
+\fontsize{6pt}{10pt}
+\selectfont
+
+urk.fei.stuba.sk
+
+\fontsize{12pt}{12pt}
+\selectfont
+\mesiacRok
+
+
+}%
+\parbox[t][16mm][b]{0.5\textwidth}{%
+\raggedleft
+
+\sffamily
+% \color{Gray}
+% \lstyle 
+
+\fontsize{6pt}{6pt}
+\selectfont
+
+\textcolor[rgb]{0.68, 0.68, 0.68}{\oznacenieVerzie}
+
+% \textcolor[rgb]{0.68, 0.68, 0.68}{počet strán: \pageref{LastPage}}
+
+\fontsize{14pt}{14pt}
+% \fontseries{sbc}
+\selectfont
+
+\bfseries
+
+\includegraphics[height=12pt]{../../COMMONFILES/KUT_logo_v0.1.pdf}%
+% \oznacenieCasti%
+{%
+% \lstyle
+% \pstyle
+\textls[-50]{\KUTporadoveCislo}
+}%
+
+}%
+
+% -----------------------------------------------------------------------------
+
+
+
+
+\vspace{6mm}
+
+% ---------------------------------------------
+\sffamily
+\bfseries
+\fontsize{18pt}{21pt}
+\selectfont
+
+\begin{flushleft}
+    O základných vlastnostiach lineárnych systémov
+\end{flushleft}
+
+\bigskip
+
+% -----------------------------------------------------------------------------
+\normalsize
+\normalfont
+% -----------------------------------------------------------------------------
+
+
+
+\section{Pozorovateľnosť}
+
+
+\subsection{Diskrétny systém}
+
+\begin{equation}
+    \label{Observability.Discrete.Equation:StateSpaceModel}
+    \bm{x}_{n + 1} = \bm{A} \bm{x}_{n}
+\end{equation}
+
+\begin{equation}
+    \bm{y}_n = \bm{C} \bm{x}_{n}
+\end{equation}
+
+\begin{subequations}
+    \begin{align}
+        \bm{y}_0       &= \bm{C} \bm{x}_{0}                \\
+        \bm{y}_1       &= \bm{C} \bm{A} \bm{x}_{0}         \\
+        &\vdotswithin{=}                                   \\
+        \bm{y}_{n - 1} &= \bm{C} \bm{A}^{n - 1} \bm{x}_{0}
+    \end{align}
+\end{subequations}
+
+\begin{equation}
+    \begin{bmatrix}
+        \bm{y}_0       \\
+        \bm{y}_1       \\
+        \vdots         \\
+        \bm{y}_{n - 1} \\
+    \end{bmatrix} = 
+    \underbrace{
+        \begin{bmatrix}
+            \bm{C}                \\
+            \bm{C} \bm{A}         \\
+            \vdots                \\
+            \bm{C} \bm{A}^{n - 1} \\
+        \end{bmatrix}
+    }_{\bs{\mathcal{O}}}
+    \bm{x}_0
+\end{equation}
+
+\begin{theorem}
+    Diskrétny lineárny systém (\ref{Observability.Discrete.Equation:StateSpaceModel}) je pozorovateľný pokiaľ matica pozorovateľnosti $\bs{\mathcal{O}}$ má plnú hodnosť:
+    \begin{equation}
+        \label{Observability.Discrete.Equation:ObservabilityTheorem}
+        \rank \left\{ \bs{\mathcal{O}} \right\} = 
+        \rank \left\{
+            \begin{bmatrix}
+                \bm{C}                \\
+                \bm{C} \bm{A}         \\
+                \vdots                \\
+                \bm{C} \bm{A}^{n - 1} \\
+            \end{bmatrix}
+        \right\} = 
+        n
+    \end{equation}
+\end{theorem}
+
+
+\subsection{Spojitý systém}
+
+\begin{equation}
+    \label{Observability.Continuous.Equation:StateSpaceModel}
+    \dot{\bm{x}} = \bm{A} \bm{x}
+\end{equation}
+
+\begin{equation}
+    \bm{y} = \bm{C} \bm{x}
+\end{equation}
+
+\begin{subequations}
+    \begin{align}
+        \dot{\bm{y}}(t_i)     &= \bm{C} \bm{x}_{0}                \\
+        \ddot{\bm{y}}(t_i)    &= \bm{C} \bm{A} \bm{x}_{0}         \\
+        &\vdotswithin{=}                                          \\
+        \bm{y}^{(n - 1)}(t_i) &= \bm{C} \bm{A}^{n - 1} \bm{x}_{0}
+    \end{align}
+\end{subequations}
+
+\begin{equation}
+    \begin{bmatrix}
+        \dot{\bm{y}}(t_i)     \\
+        \ddot{\bm{y}}(t_i)    \\
+        \vdots                \\
+        \bm{y}^{(n - 1)}(t_i)
+    \end{bmatrix} = 
+    \underbrace{
+        \begin{bmatrix}
+            \bm{C}                \\
+            \bm{C} \bm{A}         \\
+            \vdots                \\
+            \bm{C} \bm{A}^{n - 1} \\
+        \end{bmatrix}
+    }_{\bs{\mathcal{O}}}
+    \bm{x}(t_i)
+\end{equation}
+
+\begin{theorem}
+    Spojitý lineárny systém (\ref{Observability.Continuous.Equation:StateSpaceModel}) je pozorovateľný pokiaľ matica pozorovateľnosti $\bs{\mathcal{O}}$ má plnú hodnosť:
+    \begin{equation}
+        \label{Observability.Continuous.Equation:ObservabilityTheorem}
+        \rank \left\{ \bs{\mathcal{O}} \right\} = 
+        \rank \left\{
+            \begin{bmatrix}
+                \bm{C}                \\
+                \bm{C} \bm{A}         \\
+                \vdots                \\
+                \bm{C} \bm{A}^{n - 1} \\
+            \end{bmatrix}
+        \right\} = 
+        n
+    \end{equation}
+\end{theorem}
+
+
+
+\end{document}
