@@ -166,10 +166,7 @@ Vyjadríme $x_h(t_f)$:
 \begin{equation}
     x_h(t_f) = \exp(-K) \exp \left( + \int_{t_i}^{t_f} a(t) \, dt \right)
 \end{equation}
-keďže $K$ je konštanta a rovnako aj ''$\exp$'' tak môžeme zaviesť novú konštantu $L$:
-\begin{equation}
-    L = \exp(-K)
-\end{equation}
+keďže $K$ je konštanta a rovnako aj ''$\exp$'' tak môžeme zaviesť novú konštantu $L = \exp(-K)$, takéto premenovávanie konštánt budeme využívať často.
 
 Riešenie zhomogenizovanej rovnice (\ref{1stOderLDE.Equation:1stOrderLinearDifferentialEquationHomogeneous}) má teda tvar:
 \begin{equation}
@@ -207,24 +204,23 @@ a po integrácii:
     \nonumber
     x_p(t_f) &= 
     N \exp \left( \int_{t_i}^{t_f} a(\tau) \, d\tau \right) \\ &+ 
-    \int_{t_i}^{t_f} \exp \left( \int_{t_i}^{t_f} a(\tau) \, d\tau - \int_{t_i}^{t} a(\tau) \, d\tau \right) b(t) u(t) \, dt
+    \int_{t_i}^{t_f} \exp \left( \int_{t_i}^{t_f} a(\tau) \, d\tau - \int_{t_i}^{t} a(\tau) \, d\tau \right) b(t) u(t) \, dt \\ &= 
+    \int_{t_i}^{t_f} \exp \left( \int_{t}^{t_f} a(\tau) \, d\tau \right) b(t) u(t) \, dt
 \end{align}
-kde $N$ je konštanta $N = -M$.
+kde $N$ je konštanta $N = -M$, integrály sme zjednotili na základe prepdokladu, že $t \in \left< t_i, t_f \right>$.
 
 Získané homogénne (\ref{1stOderLDE.Equation:HomogeneousSolution}) a partikulárne (\ref{1stOderLDE.Equation:ParticularSolution}) riešenie teraz sčítame podľa (\ref{1stOderLDE.Equation:SolutionLinearCombination}):
-\begin{align}
-    \nonumber
-    x(t_f) &= 
-    C \exp \left( \int_{t_i}^{t_f} a(t) \, dt \right) \\ &+
-    \int_{t_i}^{t_f} \exp \left( \int_{t_i}^{t_f} a(\tau) \, d\tau - \int_{t_i}^{t} a(\tau) \, d\tau \right) b(t) u(t) \, dt
-\end{align}
+\begin{equation}
+    x(t_f) = 
+    C \exp \left( \int_{t_i}^{t_f} a(t) \, dt \right) + 
+    \int_{t_i}^{t_f} \exp \left( \int_{t}^{t_f} a(\tau) \, d\tau \right) b(t) u(t) \, dt
+\end{equation}
 kde sme zaviedli $C = L - N$, pretože všetko sú to konštanty a môžeme ich ľubovoľne premenovať. Pokiaľ ešte poznáme začiatočné podmienky $x(t_i)$, tak môžeme tvrdiť $C = x(t_i)$ a konečné riešenie lineárnej diferenciálnej rovnice 1.~rádu má tvar:
-\begin{align}
-    \nonumber
-    x(t_f) &= 
-    x(t_i) \exp \left( \int_{t_i}^{t_f} a(t) \, dt \right) \\ &+
-    \int_{t_i}^{t_f} \exp \left( \int_{t_i}^{t_f} a(\tau) \, d\tau - \int_{t_i}^{t} a(\tau) \, d\tau \right) b(t) u(t) \, dt 
-\end{align}
+\begin{equation}
+    x(t_f) = 
+    x(t_i) \exp \left( \int_{t_i}^{t_f} a(t) \, dt \right) + 
+    \int_{t_i}^{t_f} \exp \left( \int_{t}^{t_f} a(\tau) \, d\tau \right) b(t) u(t) \, dt 
+\end{equation}
 
 
 
