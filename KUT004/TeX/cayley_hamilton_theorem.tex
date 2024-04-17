@@ -1,0 +1,158 @@
+\documentclass[a4paper, 10pt, ]{article}
+
+\input{../../COMMONFILES/preamble.tex}
+
+% -----------------------------------------------------------------------------
+
+\def\oznacenieCelku{Kolekcia učebných textov}
+
+% -----------------------------------------------------------------------------
+
+\def\KUTporadoveCislo{003}
+
+% \def\oznacenieVerzie{v1.0}
+\def\oznacenieVerzie{\phantom{v1.0}}
+
+\def\mesiacRok{február 2024}
+
+\def\authorslabel{}
+
+
+
+
+
+
+% -----------------------------------------------------------------------------
+
+\begin{document}
+
+
+% -----------------------------------------------------------------------------
+% Uvodny nadpis
+
+\noindent
+\parbox[t][18mm][c]{0.3\textwidth}{%
+\raisebox{-0.9\height}{%
+\phantom{.}\includegraphics[height=18mm]{../../COMMONFILES/URKFEIlogo.pdf}%
+}%
+}%
+\parbox[t][18mm][c]{0.7\textwidth}{%
+\raggedleft
+
+
+
+\sffamily
+\fontsize{16pt}{18pt}
+\fontseries{sbc}
+\selectfont
+
+\noindent
+\textcolor[rgb]{0.75, 0.75, 0.75}{\textls[30]{\oznacenieCelku}}
+}%
+
+\noindent
+\parbox[t][16mm][b]{0.5\textwidth}{%
+\raggedright
+
+\color{Gray}
+\sffamily
+
+
+\fontsize{8pt}{10pt}
+\selectfont
+
+\authorslabel
+
+\fontsize{6pt}{10pt}
+\selectfont
+
+urk.fei.stuba.sk
+
+\fontsize{12pt}{12pt}
+\selectfont
+\mesiacRok
+
+
+}%
+\parbox[t][16mm][b]{0.5\textwidth}{%
+\raggedleft
+
+\sffamily
+% \color{Gray}
+% \lstyle 
+
+\fontsize{6pt}{6pt}
+\selectfont
+
+\textcolor[rgb]{0.68, 0.68, 0.68}{\oznacenieVerzie}
+
+% \textcolor[rgb]{0.68, 0.68, 0.68}{počet strán: \pageref{LastPage}}
+
+\fontsize{14pt}{14pt}
+% \fontseries{sbc}
+\selectfont
+
+\bfseries
+
+\includegraphics[height=12pt]{../../COMMONFILES/KUT_logo_v0.1.pdf}%
+% \oznacenieCasti%
+{%
+% \lstyle
+% \pstyle
+\textls[-50]{\KUTporadoveCislo}
+}%
+
+}%
+
+% -----------------------------------------------------------------------------
+
+
+
+
+\vspace{6mm}
+
+% ---------------------------------------------
+\sffamily
+\bfseries
+\fontsize{18pt}{21pt}
+\selectfont
+
+\begin{flushleft}
+    O základných vlastnostiach lineárnych systémov
+\end{flushleft}
+
+\bigskip
+
+% -----------------------------------------------------------------------------
+\normalsize
+\normalfont
+% -----------------------------------------------------------------------------
+
+
+
+\section{Cayleyho-Hamiltonov teorém}
+
+\begin{theorem}
+    Štvorcová matica je riešením svojho charakteristického polynómu.
+
+    Predpokladajme, že existuje štvorcová matica $\bm{A}$ s charakteristickou rovnicou:
+    \begin{equation}
+        \det \left\{ \bm{A} - \lambda \, \bm{I} \right\} = 0
+    \end{equation}
+    Túto rovnicu je možné rozpísať do tvaru:
+    \begin{equation}
+        \lambda^n + \alpha_{n - 1} \lambda^{n - 1} + \cdots + \alpha_{1} \lambda + \alpha_{0} = 0
+    \end{equation}
+    Po dosadení matice $\bm{A}$ za vlastné čísla $\lambda$:
+    \begin{equation}
+        \bm{A}^n + \alpha_{n - 1} \bm{A}^{n - 1} + \cdots + \alpha_{1} \bm{A} + \alpha_{0} \bm{I} = 0
+    \end{equation}
+    Z toho vidíme, že $n$-tú mocninu matice $\bm{A}$ môžeme zapísať	ako lineárnu kombináciu jej nižších mocnín:
+    \begin{equation}
+        \bm{A}^n = \sum_{i = 0}^{n - 1} \alpha_{i} \bm{A}^{i}
+    \end{equation}
+\end{theorem}
+
+
+
+\end{document}
