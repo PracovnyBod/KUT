@@ -132,23 +132,26 @@ urk.fei.stuba.sk
 
 \section{Riaditeľnosť}
 
+Riaditeľnosť je vlastnosť dynamických systémov dosiahnuť konečný stav zo začiatočného stavu v~konečnom čase. Hovoríme, že systém je riaditeľný pokiaľ existuje taká postupnosť vstupov, ktorá zabezpečí, že systém sa dostane z ľubovoľného začiatočného stavu do ľubovoľného konečného stavu v~konečnom čase.
 
 \subsection{Diskrétny systém}
 
+Diskrétny lineárny systém je opísaný stavovou rovnicou:
 \begin{equation}
     \label{Controllability.Discrete.Equation:StateSpaceModel}
     \bm{x}_{n + 1} = \bm{A} \bm{x}_{n} + \bm{B} \bm{u}_{n}
 \end{equation}
-
+Vývoj systému (\ref{Controllability.Discrete.Equation:StateSpaceModel}) môžeme rozpísať do sústavy rovníc:
 \begin{subequations}
     \begin{align}
         \bm{x}_{1} &= \bm{A} \bm{x}_{0} + \bm{B} \bm{u}_{0} \\
         \bm{x}_{2} &= \bm{A}^2 \bm{x}_{0} + \bm{A} \bm{B} \bm{u}_{0} + \bm{B} \bm{u}_{1} \\
         &\vdotswithin{=} \nonumber \\
+        \label{Controllability.Discrete.Equation:ControllabilityEquationFinalState}
         \bm{x}_{n} &= \bm{A}^{n} \bm{x}_{0} + \bm{A}^{n - 1} \bm{B} \bm{u}_{0} + \cdots + \bm{A} \bm{B} \bm{u}_{n - 2} + \bm{B} \bm{u}_{n - 1}
     \end{align}
 \end{subequations}
-
+Rovnica \ref{Controllability.Discrete.Equation:ControllabilityEquationFinalState} opisuje postupnosť ako dosiahnuť konečný stav $\bm{x}_n$, kde $n$ označuje celkový počet stavov. Rovnako ju môžeme zapísať aj v maticovom tvare:
 \begin{equation}
     \label{Controllability.Discrete.Equation:ControllabilityEquation}
     \bm{x}_{n} - \bm{A}^{n} \bm{x}_{0} = 
@@ -164,7 +167,7 @@ urk.fei.stuba.sk
         \bm{u}_{0}     \\
     \end{bmatrix}
 \end{equation}
-kde $\bs{\mathcal{C}}$ označuje maticu riaditeľnosti. Matica $\bs{\mathcal{C}}$ má rozmery $n \times nr$, kde r je počet vstupov (rozmer vektora $\bm{u}$). 
+kde $\bs{\mathcal{C}}$ označuje maticu riaditeľnosti. Matica $\bs{\mathcal{C}}$ má rozmery $n \times mn$, kde $m$ je počet vstupov (rozmer vektora $\bm{u}$). Rovnicu (\ref{Controllability.Discrete.Equation:ControllabilityEquation}) riešime pre vstupy $\bm{u}_{i}$ a~riešenie existuje pokiaľ matica riaditeľnosti $\bs{\mathcal{C}}$ má plnú hodnosť.
 
 \begin{theorem}
     Diskrétny lineárny systém (\ref{Controllability.Discrete.Equation:StateSpaceModel}) je riaditeľný pokiaľ matica riaditeľnosti má plnú hodnosť:
@@ -184,61 +187,55 @@ kde $\bs{\mathcal{C}}$ označuje maticu riaditeľnosti. Matica $\bs{\mathcal{C}}
 
 \subsection{Spojitý systém}
 
+V prípade spojitého lineárneho systému v~stavovom opise:
 \begin{equation}
     \label{Controllability.Continuous.Equation:StateSpaceModel}
     \dot{\bm{x}} = \bm{A} \bm{x} + \bm{B} \bm{u}
 \end{equation}
-
+môžeme riešenie zo začiatočného stavu $\bm{x}(t_i)$ do koncového stavu $\bm{x}(t_f)$ nájsť v~tvare:
 \begin{equation}
-    \bm{x}(t) = \exp \left( \bm{A} (t - t_i) \right) + \int_{t_i}^{t} \exp(\bm{A} (t - \tau)) \bm{B} \bm{u}(\tau) d\tau
+    \label{Controllability.Continuous.Equation:StateSpaceModelSolution}
+    \bm{x}(t_f) = \exp \left( \bm{A} (t_f - t_i) \right) + \int_{t_i}^{t_f} \exp(\bm{A} (t_f - \tau)) \bm{B} \bm{u}(\tau) d\tau
+\end{equation}
+alebo:
+\begin{equation}
+    \label{Controllability.Continuous.Equation:StateSpaceModelSolutionModified}
+    \exp(-\bm{A} t_f) \bm{x}(t_f) - \exp(-\bm{A} t_i) \bm{x}(t_i) = \int_{t_i}^{t_f} \exp(-\bm{A} \tau) \bm{B} \bm{u}(\tau) d\tau
+\end{equation}
+Maticový exponent môžeme vyjadriť ako nekonečný rad:
+\begin{equation}
+    \label{Controllability.Continuous.Equation:MatrixExponent}
+    \exp(\bm{A} \tau) = \sum_{n = 0}^{\infty} \frac{1}{n!} \bm{A}^{n} \tau^{n}
 \end{equation}
 
+Práca s nekonečnými radmi je ale nepraktická. Vďaka Cayleymu-Hamiltonovmu teorému ale môžeme všetky vyššie mocniny ako $n$ matice $\bm{A}$ zapísať ako lineárnu kombináciu nižších mocnín:
 \begin{equation}
-    \exp(-\bm{A}t) \bm{x}(t) - \exp(-\bm{A} t_i) \bm{x}(t_i) = \int_{t_i}^{t} \exp(-\bm{A} \tau) \bm{B} \bm{u}(\tau) d\tau
+    \bm{A}^{n} = \sum_{i = 0}^{n - 1} \alpha_{i} \bm{A}^{i}
 \end{equation}
-
-\begin{equation}
-    \exp(\bm{A}\tau) = \sum_{n = 0}^{\infty} \frac{1}{n!} \bm{A}^{n} \tau^{n}
-\end{equation}
-
-\begin{equation}
-    \det \left\{ \bm{A} - \lambda {I} \right\} = 0
-\end{equation}
-
-\begin{equation}
-    \lambda^n + \alpha_{n - 1} \lambda^{n - 1} + \cdots + \alpha_{1} \lambda + \alpha_{0} = 0
-\end{equation}
-
-\begin{equation}
-    \bm{A}^n + \alpha_{n - 1} \bm{A}^{n - 1} + \cdots + \alpha_{1} \bm{A} + \alpha_{0} \bm{I} = 0
-\end{equation}
-
-\begin{equation}
-    \bm{A}^n = \sum_{i = 0}^{n - 1} \alpha_{i} \bm{A}^{i}
-\end{equation}
-
+Maticový exponent (\ref{Controllability.Continuous.Equation:MatrixExponent}) môžeme teda prepísať do konečného radu, ktorého koeficienty sú závislé od času $\tau$:
 \begin{equation}
     \exp(\bm{A} \tau) = \sum_{n = 0}^{n - 1} \alpha_i(\tau) \bm{A}^{i}
 \end{equation}
-
+kde $n$ v~tomto prípade označuje rád systému (počet prvkov stavového vektora $\bm{x}$). Rovnica (\ref{Controllability.Continuous.Equation:StateSpaceModelSolutionModified}) potom prejde do tvaru:
 \begin{equation}
-    \exp(-\bm{A} t) \bm{x}(t) - \exp(-\bm{A} t_i) \bm{x}(t_i) = \sum_{n = 0}^{n - 1} \left( \bm{A}^{i} \bm{B} \int_{t_i}^{t} \alpha_i(\tau) \bm{u}(\tau) d\tau \right)
+    \exp(-\bm{A} t_f) \bm{x}(t_f) - \exp(-\bm{A} t_i) \bm{x}(t_i) = \sum_{n = 0}^{n - 1} \left( \bm{A}^{i} \bm{B} \int_{t_i}^{t_f} \alpha_i(\tau) \bm{u}(\tau) d\tau \right)
 \end{equation}
-
+alebo miesto sumy môžeme použiť maticové násobenie:
 \begin{multline}
-    \exp(-\bm{A} t) \bm{x}(t) - \exp(-\bm{A} t_i) \bm{x}(t_i) \\ = 
+    \exp(-\bm{A} t_f) \bm{x}(t_f) - \exp(-\bm{A} t_i) \bm{x}(t_i) \\ = 
     \underbrace{
         \begin{bmatrix}
             \bm{B} & \bm{A}\bm{B} & \cdots & \bm{A}^{n - 1} \bm{B}
         \end{bmatrix}
     }_{\bs{\mathcal{C}}}
     \begin{bmatrix}
-        \int_{t_i}^{t} \alpha_0(\tau) \bm{u}(\tau) d\tau       \\
-        \int_{t_i}^{t} \alpha_1(\tau) \bm{u}(\tau) d\tau       \\
+        \int_{t_i}^{t_f} \alpha_0(\tau) \bm{u}(\tau) d\tau       \\
+        \int_{t_i}^{t_f} \alpha_1(\tau) \bm{u}(\tau) d\tau       \\
         \vdots                                                 \\
-        \int_{t_i}^{t} \alpha_{n - 1}(\tau) \bm{u}(\tau) d\tau \\
+        \int_{t_i}^{t_f} \alpha_{n - 1}(\tau) \bm{u}(\tau) d\tau \\
     \end{bmatrix}
 \end{multline}
+Získali sme sústavu rovníc, ktorej riešenie vráti postupnosť vstupov na dosiahnutie stavu $\bm{x}(t_f)$. Riešenie ale nie je triviálne, je ale postačujúce len poznať, že takéto riešenie existuje. Riešenie bude existovať ak matica riaditeľnosti $\bs{\mathcal{C}}$, s~rozmermi $n \times mn$, kde m je rozmer vstupného vektora $\bm{u}$ a $n$ je rozmer stavového vektora $\bm{x}$, má plnú hodnosť.
 
 \begin{theorem}
     Spojitý lineárny systém (\ref{Controllability.Continuous.Equation:StateSpaceModel}) je riaditeľný pokiaľ matica riaditeľnosti $\bs{\mathcal{C}}$ má plnú hodnosť:
