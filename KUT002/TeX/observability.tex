@@ -183,7 +183,7 @@ Systém rovníc (\ref{Observability.Discrete.Equation:OutputSystem}) môžeme ti
     }_{\bs{\mathcal{O}}}
     \bm{x}_0
 \end{equation}
-Snažíme sa vyriešiť systém (\ref{Observability.Discrete.Equation:OutputSystemMatrix}) vzhľadom na $\bm{x}_{0}$, kde $\bs{\mathcal{O}}$ označuje maticu pozorovateľnosti. Riešenie bude existovať len vtedy ak matica pozorovateľnosti bude mať plnú hodnosť.
+Snažíme sa vyriešiť systém (\ref{Observability.Discrete.Equation:OutputSystemMatrix}) vzhľadom na $\bm{x}_{0}$, kde $\bs{\mathcal{O}}$ označuje maticu pozorovateľnosti s~rozmermi $mn \times n$, kde $m$ je počet výstupov. Riešenie bude existovať len vtedy ak matica pozorovateľnosti bude mať plnú hodnosť.
 
 \begin{theorem}
     Diskrétny lineárny systém (\ref{Observability.Discrete.Equation:StateSpaceModel}) je pozorovateľný pokiaľ matica pozorovateľnosti $\bs{\mathcal{O}}$ má plnú hodnosť:
@@ -250,7 +250,7 @@ Znova platí argument, že na $n$ prvkov stavu potrebujeme práve $n$ informáci
     }_{\bs{\mathcal{O}}}
     \bm{x}(t_i)
 \end{equation}
-ktorá je riešiteľná len vtedy, keď matica pozorovateľnosti $\bs{\mathcal{O}}$ má plnú hodnosť.
+ktorá je riešiteľná len vtedy, keď matica pozorovateľnosti $\bs{\mathcal{O}}$, s~rozmermi $mn \times n$, kde $m$ je počet výstupov, má plnú hodnosť.
 
 \begin{theorem}
     Spojitý lineárny systém (\ref{Observability.Continuous.Equation:StateSpaceModel}) je pozorovateľný pokiaľ matica pozorovateľnosti $\bs{\mathcal{O}}$ má plnú hodnosť:
