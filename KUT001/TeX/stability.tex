@@ -210,7 +210,7 @@ musíme aplikovať Lyapunovovu teóriu stability. Táto teória je použiteľná
     Dynamický systém (\ref{Stability.Lyapunov.Equation:System}) je lokálne stabilný pokiaľ existuje Lyapunovova funkcia $V: \mathbb{R}^n \rightarrow \mathbb{R}$, pre ktorú platí:
     \begin{subequations}
         \begin{enumerate}
-            \item V rovnovážnom stave $\bm{0}$ platí:
+            \item V rovnovážnom stave $\bm{x} = \bm{0}$ platí:
             \begin{equation}
                 \label{Stability.Lyapunov.Definition.Equation:Equilibrium}
                 V(\bm{0}) = 0 \\
@@ -261,7 +261,7 @@ Zvolíme kandidáta na Lyapunovovu funkciu v~tvare:
     \label{Stability.Lyapunov.Discrete.Equation:LyapunovCandidate}
     V(\bm{x}_{n}) = \bm{x}_{n}^\top \bm{P} \bm{x}_{n}
 \end{equation}
-kde $\bm{P}$ musí byť pozitívne definitná matica, aby bola splnená podmienka (\ref{Stability.Lyapunov.Definition.Equation:PositiveDefinitness})
+kde $\bm{P}$ musí byť symetrická pozitívne definitná matica, aby bola splnená podmienka (\ref{Stability.Lyapunov.Definition.Equation:PositiveDefinitness})
 
 Ďalej musí byť splnená podmienka (\ref{Stability.Lyapunov.Definition.Equation:NegativeDefinitnessDiscrete}), dosadíme teda (\ref{Stability.Lyapunov.Discrete.Equation:LyapunovCandidate}):
 \begin{equation}
@@ -298,7 +298,7 @@ Zvolíme kandidáta na Lyapunovovu funkciu tak, aby bola splnená podmienka (\re
     \label{Stability.Lyapunov.Continuous.Equation:LyapunovCandidate}
     V = \bm{x}^\top \bm{P} \bm{x}
 \end{equation}
-kde $\bm{P}$ musí byť pozitívne definitná matica.
+kde $\bm{P}$ musí byť symetrická pozitívne definitná matica.
 
 Vypočítame časovú deriváciu (\ref{Stability.Lyapunov.Continuous.Equation:LyapunovCandidate}) a vyšetríme podmienku (\ref{Stability.Lyapunov.Definition.Equation:NegativeDefinitnessAsymptotical}):
 \begin{equation}
