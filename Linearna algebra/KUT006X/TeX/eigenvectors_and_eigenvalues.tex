@@ -1,0 +1,323 @@
+\documentclass[a4paper, 10pt, ]{article}
+
+\input{./COMMONFILES/preamble.tex}
+
+% -----------------------------------------------------------------------------
+
+\def\oznacenieCelku{Kolekcia učebných textov}
+
+% -----------------------------------------------------------------------------
+
+\def\KUTporadoveCislo{003}
+
+% \def\oznacenieVerzie{v1.0}
+\def\oznacenieVerzie{\phantom{v1.0}}
+
+\def\mesiacRok{február 2024}
+
+\def\authorslabel{}
+
+% -----------------------------------------------------------------------------
+
+% -----------------------------------------------------------------------------
+
+\begin{document}
+
+
+% -----------------------------------------------------------------------------
+% Uvodny nadpis
+
+\noindent
+\parbox[t][18mm][c]{0.3\textwidth}{%
+\raisebox{-0.9\height}{%
+\phantom{.}\includegraphics[height=18mm]{./COMMONFILES/URKFEIlogo.pdf}%
+}%
+}%
+\parbox[t][18mm][c]{0.7\textwidth}{%
+\raggedleft
+
+
+
+\sffamily
+\fontsize{16pt}{18pt}
+\fontseries{sbc}
+\selectfont
+
+\noindent
+\textcolor[rgb]{0.75, 0.75, 0.75}{\textls[30]{\oznacenieCelku}}
+}%
+
+\noindent
+\parbox[t][16mm][b]{0.5\textwidth}{%
+\raggedright
+
+\color{Gray}
+\sffamily
+
+
+\fontsize{8pt}{10pt}
+\selectfont
+
+\authorslabel
+
+\fontsize{6pt}{10pt}
+\selectfont
+
+urk.fei.stuba.sk
+
+\fontsize{12pt}{12pt}
+\selectfont
+\mesiacRok
+
+
+}%
+\parbox[t][16mm][b]{0.5\textwidth}{%
+\raggedleft
+
+\sffamily
+% \color{Gray}
+% \lstyle 
+
+\fontsize{6pt}{6pt}
+\selectfont
+
+\textcolor[rgb]{0.68, 0.68, 0.68}{\oznacenieVerzie}
+
+% \textcolor[rgb]{0.68, 0.68, 0.68}{počet strán: \pageref{LastPage}}
+
+\fontsize{14pt}{14pt}
+% \fontseries{sbc}
+\selectfont
+
+\bfseries
+
+\includegraphics[height=12pt]{./COMMONFILES/KUT_logo_v0.1.pdf}%
+% \oznacenieCasti%
+{%
+% \lstyle
+% \pstyle
+\textls[-50]{\KUTporadoveCislo}
+}%
+
+}%
+
+% -----------------------------------------------------------------------------
+
+
+
+
+\vspace{6mm}
+
+% ---------------------------------------------
+\sffamily
+\bfseries
+\fontsize{18pt}{21pt}
+\selectfont
+
+\begin{flushleft}
+    O vlastných vektoroch a vlastných číslach
+\end{flushleft}
+
+\bigskip
+
+% -----------------------------------------------------------------------------
+\normalsize
+\normalfont
+% -----------------------------------------------------------------------------
+
+\section{Vlastné vektory a vlastné hodnoty}
+\label{EigenvectorsEigenvalues}
+
+\begin{definition}[Vlastné čísla matice]
+    \label{EigenvectorsEigenvalues.Definition:Eigenvalues}
+    Hovoríme, že nenulový vektor $\bm{v}$ je vlastný vektor štvorcovej matice $\bm{T}$, pokiaľ existuje skalár $\lambda$ taký, že:
+    \begin{equation}
+        \bm{T} \bm{v} = \lambda \bm{v}
+    \end{equation}
+    kde $\lambda$ nazývame vlastné číslo matice $\bm{T}$.
+\end{definition}
+
+Naskytuje sa teraz otázka ako také vlastné čísla a vlastné vektory nájsť. Čiže musíme vyriešiť rovnicu:
+\begin{equation}
+    \label{EigenvectorsEigenvalues.Equation:EigenvaluesEquation}
+    \left( \bm{T} - \lambda \bm{I} \right) \bm{v} = \bm{0}
+\end{equation}
+kde $\bm{I}$ je jednotková matica.
+
+Predpokladajme, že existuje inverzia matice $\left( \bm{T} - \lambda \bm{I} \right)$. Potom by malo platiť:
+\begin{equation}
+    \label{EigenvectorsEigenvalues.Equation:Contradiction}
+    \bm{v} = \bm{I} \bm{v} = 
+    \left( \bm{T} - \lambda \bm{I} \right)^{-1} \underbrace{\left( \bm{T} - \lambda \bm{I} \right) \bm{v}}_{\bm{0}} = \bm{0}
+\end{equation}
+Vidíme ale, že v (\ref{EigenvectorsEigenvalues.Equation:Contradiction}) sme prišli do sporu, lebo podľa definície \ref{EigenvectorsEigenvalues.Definition:Eigenvalues} je $\bm{v}$ nenulový vektor. Čiže matica $\left( \bm{T} - \lambda \bm{I} \right)$ nemôže byť invertibilná, to znamená, že je singulárna a pre jej determinant platí:
+\begin{equation}
+    \label{EigenvectorsEigenvalues.Equation:Determinant}
+    \det \left\{ \bm{T} - \lambda \bm{I} \right\} = 0
+\end{equation}
+Vyriešením (\ref{EigenvectorsEigenvalues.Equation:Determinant}) teda môžeme získať vlastné čísla $\lambda$ matice $\bm{T}$.
+
+\begin{example}
+    \begin{subequations}
+        Nájdite vlastné čísla a vlastné vektory matice:
+        \begin{equation*}
+            \bm{M} = 
+            \begin{bmatrix}
+                \phantom{-}3 & 7 \\
+                          -4 & 1
+            \end{bmatrix}
+        \end{equation*}
+
+        \noindent \textit{Vlastné čísla:}
+        \begin{align*}
+            &\det \left\{ \bm{M} - \lambda \bm{I} \right\} = 
+            \det \left\{ 
+                \begin{bmatrix}
+                    4 & \phantom{-}7 \\
+                    1 & -2
+                \end{bmatrix} - 
+                \begin{bmatrix}
+                    \lambda & 0      \\
+                    0       & \lambda
+                \end{bmatrix}
+            \right\} = 
+            \det \left\{
+                \begin{bmatrix}
+                    4 - \lambda & \phantom{-}7 \\
+                    1           & -2 - \lambda
+                \end{bmatrix}
+            \right\} = 0 \\
+            &\det \left\{
+                \begin{bmatrix}
+                    4 - \lambda & \phantom{-}7 \\
+                    1           & -2 - \lambda
+                \end{bmatrix}
+            \right\} = 
+            (4 - \lambda) (-2 - \lambda) - (1 \cdot 7) = \lambda^2 - 2\lambda - 15 \\
+            &\lambda^2 - 2\lambda - 15 = 0 \ \Longrightarrow \ \lambda_1 = 5, \ \lambda_2 = -3
+        \end{align*}
+
+        \noindent \textit{Vlastné vektory:}
+
+        $\lambda = 5$:
+        \begin{align*}
+            &\left( \bm{M} - \lambda \bm{I} \right) \bm{v} = 0 \ \thicksim \ 
+            \begin{bmatrix}
+                4 - 5 & 7 \\
+                1     & -2 - 5
+            \end{bmatrix}
+            \begin{bmatrix}
+                v_1 \\ 
+                v_2
+            \end{bmatrix} = 
+            \begin{bmatrix}
+                0 \\ 
+                0
+            \end{bmatrix} \\
+            &\begin{bmatrix}
+                -1           & \phantom{-}7 \\
+                \phantom{-}1 & -7
+            \end{bmatrix}
+            \begin{bmatrix}
+                v_1 \\ 
+                v_2
+            \end{bmatrix} = 
+            \begin{bmatrix}
+                0 \\ 
+                0
+            \end{bmatrix} \thicksim 
+            \begin{bmatrix}
+                -1           & 7 \\
+                \phantom{-}0 & 0
+            \end{bmatrix} 
+            \begin{bmatrix}
+                v_1 \\ 
+                v_2
+            \end{bmatrix} = 
+            \begin{bmatrix}
+                0 \\ 
+                0
+            \end{bmatrix}
+        \end{align*}
+        
+        \noindent Sústava rovníc má nekonečne veľa riešení, riešenie je parametrizované parametrom $t$, ktorý môže byť ľubovoľné reálne číslo okrem $0$.
+        \begin{align*}
+            &v_2 = t, \quad t \in \mathbb{R} \setminus \{0\} \\
+            &v_1 = 7 v_2 = 7 t \\
+        \end{align*}
+        Vlastný vektor pre $\lambda = 5$ je napríklad:
+        \begin{equation*}    
+            \bm{v} = 
+            \begin{bmatrix}
+                7t \\
+                t
+            \end{bmatrix} = 
+            \begin{bmatrix}
+                7 \\
+                1
+            \end{bmatrix}, \quad t = 1
+        \end{equation*}
+        
+
+        $\lambda = 5$:
+        \begin{align*}
+            &\left( \bm{M} - \lambda \bm{I} \right) \bm{v} = 0 \ \thicksim \ 
+            \begin{bmatrix}
+                4 + 3 & 7 \\
+                1     & -2 + 3
+            \end{bmatrix}
+            \begin{bmatrix}
+                v_1 \\ 
+                v_2
+            \end{bmatrix} = 
+            \begin{bmatrix}
+                0 \\ 
+                0
+            \end{bmatrix} \\
+            &\begin{bmatrix}
+                7 & 7 \\
+                1 & 1
+            \end{bmatrix}
+            \begin{bmatrix}
+                v_1 \\ 
+                v_2
+            \end{bmatrix} = 
+            \begin{bmatrix}
+                0 \\ 
+                0
+            \end{bmatrix} \thicksim 
+            \begin{bmatrix}
+                7 & 7 \\
+                0 & 0
+            \end{bmatrix} 
+            \begin{bmatrix}
+                v_1 \\ 
+                v_2
+            \end{bmatrix} = 
+            \begin{bmatrix}
+                0 \\ 
+                0
+            \end{bmatrix}
+        \end{align*}
+    
+        \noindent Sústava rovníc má nekonečne veľa riešení, riešenie je parametrizované parametrom $t$, ktorý môže byť ľubovoľné reálne číslo okrem $0$.
+        \begin{align*}
+            &v_2 = t, \quad t \in \mathbb{R} \setminus \{0\} \\
+            &v_1 = v_2 = 7 \\
+        \end{align*}
+         Vlastný vektor pre $\lambda = -3$ je napríklad:
+        \begin{equation*}    
+            \bm{v} = 
+            \begin{bmatrix}
+                t \\
+                t
+            \end{bmatrix} = 
+            \begin{bmatrix}
+                1 \\
+                1
+            \end{bmatrix}, \quad t = 1
+        \end{equation*}
+    \end{subequations}
+\end{example}
+
+\end{document}
