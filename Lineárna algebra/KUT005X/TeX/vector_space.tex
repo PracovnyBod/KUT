@@ -1,0 +1,244 @@
+\documentclass[a4paper, 10pt, ]{article}
+
+\input{../../COMMONFILES/preamble.tex}
+
+% -----------------------------------------------------------------------------
+
+\def\oznacenieCelku{Kolekcia učebných textov}
+
+% -----------------------------------------------------------------------------
+
+\def\KUTporadoveCislo{002}
+
+% \def\oznacenieVerzie{v1.0}
+\def\oznacenieVerzie{\phantom{v1.0}}
+
+\def\mesiacRok{február 2024}
+
+\def\authorslabel{}
+
+% -----------------------------------------------------------------------------
+
+% -----------------------------------------------------------------------------
+
+\begin{document}
+
+
+% -----------------------------------------------------------------------------
+% Uvodny nadpis
+
+\noindent
+\parbox[t][18mm][c]{0.3\textwidth}{%
+\raisebox{-0.9\height}{%
+\phantom{.}\includegraphics[height=18mm]{../../COMMONFILES/URKFEIlogo.pdf}%
+}%
+}%
+\parbox[t][18mm][c]{0.7\textwidth}{%
+\raggedleft
+
+
+
+\sffamily
+\fontsize{16pt}{18pt}
+\fontseries{sbc}
+\selectfont
+
+\noindent
+\textcolor[rgb]{0.75, 0.75, 0.75}{\textls[30]{\oznacenieCelku}}
+}%
+
+\noindent
+\parbox[t][16mm][b]{0.5\textwidth}{%
+\raggedright
+
+\color{Gray}
+\sffamily
+
+
+\fontsize{8pt}{10pt}
+\selectfont
+
+\authorslabel
+
+\fontsize{6pt}{10pt}
+\selectfont
+
+urk.fei.stuba.sk
+
+\fontsize{12pt}{12pt}
+\selectfont
+\mesiacRok
+
+
+}%
+\parbox[t][16mm][b]{0.5\textwidth}{%
+\raggedleft
+
+\sffamily
+% \color{Gray}
+% \lstyle 
+
+\fontsize{6pt}{6pt}
+\selectfont
+
+\textcolor[rgb]{0.68, 0.68, 0.68}{\oznacenieVerzie}
+
+% \textcolor[rgb]{0.68, 0.68, 0.68}{počet strán: \pageref{LastPage}}
+
+\fontsize{14pt}{14pt}
+% \fontseries{sbc}
+\selectfont
+
+\bfseries
+
+\includegraphics[height=12pt]{../../COMMONFILES/KUT_logo_v0.1.pdf}%
+% \oznacenieCasti%
+{%
+% \lstyle
+% \pstyle
+\textls[-50]{\KUTporadoveCislo}
+}%
+
+}%
+
+% -----------------------------------------------------------------------------
+
+
+
+
+\vspace{6mm}
+
+% ---------------------------------------------
+\sffamily
+\bfseries
+\fontsize{18pt}{21pt}
+\selectfont
+
+\begin{flushleft}
+    O vektorových priestoroch
+\end{flushleft}
+
+\bigskip
+
+% -----------------------------------------------------------------------------
+\normalsize
+\normalfont
+% -----------------------------------------------------------------------------
+
+\section{Vektorový priestor}
+\label{VectorSpace}
+
+\begin{definition}[Vektorový priestor]
+    \label{VectorSpace.Definition:VectorSpace}
+    Vektorový priestor $V$ nad poľom $K$ je neprázdna množina s dvomi definovanými operáciami $\oplus: V \times V \rightarrow V$  a $\odot: K \times V \rightarrow V$, ktorá spĺňa nasledujúcich 8 axiómov:
+    \begin{enumerate}
+        \TabPositions{1cm}
+        \item Asociatívnosť: \\
+        \tab\tab $\bm{u} \oplus (\bm{v} \oplus \bm{w}) = (\bm{u} \oplus \bm{v}) \oplus \bm{w}, \quad \bm{u}, \bm{v}, \bm{w} \in V$
+        
+        \item Komutatívnosť: \\
+        \tab\tab $\bm{u} \oplus \bm{v} = \bm{v} \oplus \bm{u}, \quad \bm{u}, \bm{v} \in V$
+        
+        \item Prvok identity vektorového súčtu: \\
+        \tab\tab $\bm{u} \oplus \bm{0} = \bm{u}, \quad \bm{u}, \bm{0} \in V$
+        
+        \item Inverzný prvok: \\
+        \tab\tab $\bm{u} \oplus \bm{v} = \bm{0}, \quad \bm{u}, \bm{v}, \bm{0} \in V$
+        
+        \item Kompatibilita skalárneho násobenia s násobením poľa \\
+        \tab\tab $\alpha \odot (\beta \odot \bm{u}) = (\alpha \beta) \odot \bm{u}, \quad \alpha, \beta \in K, \quad \bm{u} \in V$
+        
+        \item Prvok identity skalárneho násobenia: \\
+        \tab\tab $\mathbb{1} \odot \bm{u} = \bm{u}, \quad \mathbb{1} \in K, \quad \bm{u} \in V$
+        
+        \item Distributívnosť vzhľadom na vektorový súčet: \\
+        \tab\tab $\alpha \odot (\bm{u} \oplus \bm{v}) = \alpha \odot \bm{u} \oplus \alpha \odot \bm{v}, \quad \alpha \in K, \quad \bm{u}, \bm{v} \in V$
+        
+        \item Distributívnosť vzhľadom na súčet poľa: \\
+        \tab\tab $(\alpha + \beta) \odot \bm{u} = \alpha \odot \bm{u} \oplus \beta \odot \bm{u}, \quad \alpha, \beta \in K, \quad \bm{u} \in V$
+    \end{enumerate}
+\end{definition}
+
+V definícii (\ref{VectorSpace.Definition:VectorSpace}) sme zámerne označili operácie $+$ a $\cdot$ v krúžku, aby sme ich rozlíšili od štandardne definovaného súčtu a súčinu, je možné ale používať aj označenie bez krúžku. Prvky $\bm{0}$ a $\mathbb{1}$ sú špeciálne a pre každý vektorový priestor originálne, nemusia nutne zodpovedať číselnej $0$ a $1$.
+
+\begin{example}
+    Vyšetrite či komplexné čísla $\bm{z} = \alpha + i \beta$ so štandardne definovanými operáciami $+, \cdot$ tvoria vektorový priestor $V$ nad reálnymi číslami $\mathbb{R}$, $\bm{z} \in V$, $\alpha, \beta \in \mathbb{R}$.
+
+    \begin{enumerate}
+        \item
+        \begin{align*}
+            \alpha_1 + i \beta_1 + (\alpha_2 + i \beta_2 + \alpha_3 + i \beta_3) &= 
+            \alpha_1 + i \beta_1 + (\alpha_2 + \alpha_3 + i (\beta_2 + \beta_3)) \\ &= 
+            \alpha_1 + \alpha_2 + \alpha_3 + i (\beta_1 + \beta_2 + \beta_3) \\ 
+            (\alpha_1 + i \beta_1 + \alpha_2 + i \beta_2) + \alpha_3 + i \beta_3 &= 
+            (\alpha_1 + \alpha_2 i (\beta_1 + \beta_2)) + \alpha_3 + i\beta_3 \\ &= 
+            \alpha_1 + \alpha_2 + \alpha_3 + i (\beta_1 + \beta_2 + \beta_3) 
+        \end{align*}
+        
+        \item
+        \begin{align*}
+            \alpha_1 + i \beta_1 + \alpha_2 + i \beta_2 &= 
+            \alpha_1 + \alpha_2 + i (\beta_1 + \beta_2) \\ 
+            \alpha_2 + i \beta_2 + \alpha_1 + i \beta_1&= 
+            \alpha_2 + \alpha_1 + i (\beta_2 + \beta_1) \\ &= 
+            \alpha_1 + \alpha_2 + i (\beta_1 + \beta_2) 
+        \end{align*}
+
+        \item
+        \begin{align*}
+            &\alpha + i \beta + o_r + i o_i = 
+            \alpha + i \beta \\ 
+            &\alpha + o_r = \alpha \ \Longrightarrow \ o_r = 0 \\
+            &\beta + o_i = \beta \ \Longrightarrow \ o_i = 0 \\
+            & \bm{0} = 0 + i0 
+        \end{align*}
+
+        \item
+        \begin{align*}
+            &\alpha_1 + i \beta_1 + \alpha_2 + i\beta_2 = 0 + i0 \\
+            &\alpha_1 + \alpha_2 = 0 \ \Longrightarrow \ \alpha_1 = -\alpha_2 \\
+            &\beta_1 + \beta_2 = 0 \ \Longrightarrow \ \beta_1 = -\beta_2 \\
+            & \bm{z} + (-\bm{z}) = \bm{0} 
+        \end{align*}
+
+        \item $\mu, \ \nu \in \mathbb{R}$
+        \begin{align*}
+            \mu (\nu (\alpha + i \beta)) &= \mu (\nu \alpha + i \nu \beta)) = \mu \nu \alpha + i \mu \nu \beta \\
+            (\mu \nu) (\alpha + i \beta) &= \mu \nu \alpha + i \mu \nu \beta \\
+        \end{align*}
+
+        \item
+        \begin{align*}
+            &\mathbb{1} \alpha + i \mathbb{1} \beta = \alpha + i \beta \\
+            &\mathbb{1} \alpha = \alpha \ \Longrightarrow \ \mathbb{1} = 1 \\
+            &\mathbb{1} \beta = \beta \ \Longrightarrow \ \mathbb{1} = 1 \\
+            &\mathbb{1} = 1 
+        \end{align*}
+
+        \item $\mu, \ \nu \in \mathbb{R}$
+        \begin{align*}
+            \mu (\alpha_1 + i \beta_1 + \alpha_2 + i\beta_2) &= 
+            \mu (\alpha_1 + \alpha_2 + i (\beta_1 + \beta_2)) \\ &= 
+            \mu(\alpha_1 + \alpha_2) + i \mu (\beta_1 + \beta_2) \\ & = 
+            \mu \alpha_1 + \mu \alpha_2 + i (\mu \beta_1 + \mu \beta_2) \\ 
+            \mu (\alpha_1 + i \beta_1) + \mu (\alpha_2 + i \beta_2) &= 
+            \mu \alpha_1 + i \mu \beta_1 + \mu \alpha_2 + i \mu \beta_2 \\ &=
+            \mu \alpha_1 + \mu \alpha_2 + i (\mu \beta_1 + \mu \beta_2)  
+        \end{align*}
+
+        \item $\mu, \ \nu \in \mathbb{R}$
+        \begin{align*}
+            (\mu + \nu) (\alpha + i \beta) &= 
+            (\mu + \nu) \alpha + i (\mu + \nu) \beta \\ &=
+            \mu \alpha + \nu \alpha + i (\mu \beta + \nu \beta) \\
+            \mu (\alpha + i \beta) + \nu (\alpha + i \beta) &= 
+            \mu \alpha + i \mu \beta + \nu \alpha + i \nu \beta \\ &=
+            \mu \alpha + \nu \alpha + i (\mu \beta + \nu \beta)  
+        \end{align*}
+    \end{enumerate}
+    Vidíme, že všetky axiómy sú splnené a môžeme teda tvrdiť, že komplexné čísla tvoria vektorový priestor nad reálnymi číslami.
+\end{example}
+
+
+
+\end{document}
