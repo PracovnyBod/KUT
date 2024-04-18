@@ -6,14 +6,14 @@
 \usepackage[T1]{fontenc}
 
 \usepackage[left=4cm,
-			right=4cm,
-			top=2.1cm,
-			bottom=2.6cm,
-			footskip=7.5mm,
-			twoside,
-			marginparwidth=3.0cm,
-			%showframe,
-			]{geometry}
+            right=4cm,
+            top=2.1cm,
+            bottom=2.6cm,
+            footskip=7.5mm,
+            twoside,
+            marginparwidth=3.0cm,
+            %showframe,
+            ]{geometry}
 
 \usepackage{graphicx}
 \usepackage[dvipsnames]{xcolor}
@@ -50,21 +50,21 @@
 
 \makeatletter
 
-	\def\@seccntformat#1{\protect\makebox[0pt][r]{\csname the#1\endcsname\hspace{4mm}}}
+    \def\@seccntformat#1{\protect\makebox[0pt][r]{\csname the#1\endcsname\hspace{4mm}}}
 
-	\def\cleardoublepage{\clearpage\if@twoside \ifodd\c@page\else
-	\hbox{}
-	\vspace*{\fill}
-	\begin{center}
-	\phantom{}
-	\end{center}
-	\vspace{\fill}
-	\thispagestyle{empty}
-	\newpage
-	\if@twocolumn\hbox{}\newpage\fi\fi\fi}
+    \def\cleardoublepage{\clearpage\if@twoside \ifodd\c@page\else
+    \hbox{}
+    \vspace*{\fill}
+    \begin{center}
+    \phantom{}
+    \end{center}
+    \vspace{\fill}
+    \thispagestyle{empty}
+    \newpage
+    \if@twocolumn\hbox{}\newpage\fi\fi\fi}
 
-	\newcommand\figcaption{\def\@captype{figure}\caption}
-	\newcommand\tabcaption{\def\@captype{table}\caption}
+    \newcommand\figcaption{\def\@captype{figure}\caption}
+    \newcommand\tabcaption{\def\@captype{table}\caption}
 
 \makeatother
 
@@ -95,13 +95,13 @@
 
 \PassOptionsToPackage{hyphens}{url}
 \usepackage[pdfauthor={},
-			pdftitle={},
-			pdfsubject={},
-			pdfkeywords={},
-			% hidelinks,
-			colorlinks=false,
-			breaklinks,
-			]{hyperref}
+            pdftitle={},
+            pdfsubject={},
+            pdfkeywords={},
+            % hidelinks,
+            colorlinks=false,
+            breaklinks,
+            ]{hyperref}
 
 
 % ------------------------------
@@ -132,20 +132,29 @@
 \makeatletter
 \renewcommand{\ALG@name}{Algoritmus}
 \makeatother
+\usepackage{amsmath}
 \usepackage{bbold}
+\usepackage{calc}
 \usepackage{dsfont}
+\usepackage{mathtools}
 \usepackage{tabto}
 
 
 \newcommand{\mr}[1]{\mathrm{#1}}
-\newcommand{\bm}[1]{\mathbf{#1}}
 \newcommand{\bs}[1]{\boldsymbol{#1}}
-\newcommand{\der}[2]{\frac{d #1}{d #2}}
+\newcommand{\bm}[1]{\mathbf{#1}}
+
 \newcommand{\diff}[2]{\frac{\Delta #1}{\Delta #2}}
+\newcommand{\der}[2]{\frac{d #1}{d #2}}
 \newcommand{\parder}[2]{\frac{\partial #1}{\partial #2}}
+
 \newcommand{\argmax}[0]{\mr{argmax}}
-\newcommand{\trace}[0]{\mr{tr}}
 \newcommand{\diag}[0]{\mr{diag}}
+\newcommand{\rank}[0]{\mr{rank}}
+\newcommand{\trace}[0]{\mr{tr}}
+
+\renewcommand{\Re}{\mr{Re}}
+\renewcommand{\Im}{\mr{Im}}
 
 
 \theoremstyle{definition}
