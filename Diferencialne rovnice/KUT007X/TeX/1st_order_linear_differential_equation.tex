@@ -200,7 +200,7 @@ a po integrácii:
     N \exp \left( \int_{t_i}^{t_f} a(\tau) \, d\tau \right) \\ &+ 
     \int_{t_i}^{t_f} \exp \left( \int_{t}^{t_f} a(\tau) \, d\tau \right) b(t) u(t) \, dt
 \end{align}
-kde $N$ je konštanta $N = -M$, integrály sme zjednotili na základe prepdokladu, že $t \in \left< t_i, t_f \right>$.
+kde $N$ je konštanta $N = -M$, integrály sme zjednotili na základe predpokladu, že $t \in \left< t_i, t_f \right>$, teda integrály na intervale $\left< t_i, t \right>$ sa navzájom odčítajú.
 
 Získané homogénne (\ref{1stOderLDE.Equation:HomogeneousSolution}) a partikulárne (\ref{1stOderLDE.Equation:ParticularSolution}) riešenie teraz sčítame podľa (\ref{1stOderLDE.Equation:SolutionLinearCombination}):
 \begin{equation}
@@ -224,7 +224,7 @@ Rovnako môžeme postupovať aj v prípade sústavy diferenciálnych rovníc 1.~
     \label{SystemLDE:StateSpace}
     \dot{\bm{x}}(t) = \bm{A} \bm{x}(t) + \bm{B} \bm{u}(t)
 \end{equation}
-Tento tvar je zámerne zhodný s tvarom stavového modelu. Matice $\bm{A}$ a $\bm{B}$ sú konštantné, pretože v prípade, že by boli časovo premenlivé tak neexistuje analytické riešenie. A teda analytické riešenie sústavy diferenciálnych rovníc 1. rádu (\ref{SystemLDE:StateSpace}) má tvar:
+Tento tvar je zámerne zhodný s tvarom stavového modelu. Matice $\bm{A}$ a $\bm{B}$ sú konštantné, pretože v prípade, že by boli časovo premenlivé tak neexistuje analytické riešenie. A~teda analytické riešenie sústavy diferenciálnych rovníc 1. rádu (\ref{SystemLDE:StateSpace}) má tvar:
 \begin{equation}
     \bm{x}(t_f) = 
     \bm{x}(t_i) \exp \left( \bm{A} (t_f - t_i) \right) + 
