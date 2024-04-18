@@ -8,21 +8,23 @@
 
 % -----------------------------------------------------------------------------
 
-\def\KUTporadoveCislo{001}
 
-% \def\oznacenieVerzie{v1.0}
-\def\oznacenieVerzie{\phantom{v1.0}}
+\def\KUTporadoveCislo{00X}
 
-\def\mesiacRok{február 2024}
+\def\oznacenieVerzie{v0.9}
+% \def\oznacenieVerzie{\phantom{v1.0}}
 
-\def\authorslabel{}
+\def\mesiacRok{apríl 2024}
 
-% -----------------------------------------------------------------------------
+\def\authorslabel{RM}
+
+
+
+
 
 % -----------------------------------------------------------------------------
 
 \begin{document}
-
 
 % -----------------------------------------------------------------------------
 % Uvodny nadpis
@@ -36,15 +38,13 @@
 \parbox[t][18mm][c]{0.7\textwidth}{%
 \raggedleft
 
-
-
 \sffamily
 \fontsize{16pt}{18pt}
 \fontseries{sbc}
 \selectfont
 
 \noindent
-\textcolor[rgb]{0.75, 0.75, 0.75}{\textls[30]{\oznacenieCelku}}
+\textcolor[rgb]{0.75, 0.75, 0.75}{\textls[25]{\oznacenieCelku}}
 }%
 
 \noindent
@@ -54,20 +54,19 @@
 \color{Gray}
 \sffamily
 
-
-\fontsize{8pt}{10pt}
-\selectfont
-
-\authorslabel
-
-\fontsize{6pt}{10pt}
-\selectfont
-
-urk.fei.stuba.sk
-
 \fontsize{12pt}{12pt}
 \selectfont
 \mesiacRok
+
+\fontsize{6pt}{10pt}
+\selectfont
+github.com/PracovnyBod/KUT
+
+\fontsize{8pt}{10pt}
+\selectfont
+\authorslabel
+
+
 
 
 }%
@@ -75,33 +74,26 @@ urk.fei.stuba.sk
 \raggedleft
 
 \sffamily
-% \color{Gray}
-% \lstyle 
 
 \fontsize{6pt}{6pt}
 \selectfont
 
 \textcolor[rgb]{0.68, 0.68, 0.68}{\oznacenieVerzie}
 
-% \textcolor[rgb]{0.68, 0.68, 0.68}{počet strán: \pageref{LastPage}}
 
 \fontsize{14pt}{14pt}
-% \fontseries{sbc}
 \selectfont
 
 \bfseries
 
 \includegraphics[height=12pt]{./COMMONFILES/KUT_logo_v0.1.pdf}%
-% \oznacenieCasti%
 {%
-% \lstyle
-% \pstyle
 \textls[-50]{\KUTporadoveCislo}
 }%
-
 }%
 
 % -----------------------------------------------------------------------------
+
 
 
 
@@ -164,7 +156,7 @@ Integráciu realizujeme na intervale $\left< t_i, t_f \right>$, zaviedli sme kon
 
 Vyjadríme $x_h(t_f)$:
 \begin{equation}
-    x_h(t_f) = \exp(-K) \exp \left( + \int_{t_i}^{t_f} a(t) \, dt \right)
+    x_h(t_f) = \exp(-K) \exp \left( \int_{t_i}^{t_f} a(t) \, dt \right)
 \end{equation}
 keďže $K$ je konštanta a rovnako aj ''$\exp$'' tak môžeme zaviesť novú konštantu $L = \exp(-K)$, takéto premenovávanie konštánt budeme využívať často.
 
