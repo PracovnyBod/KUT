@@ -120,12 +120,14 @@ github.com/PracovnyBod/KUT
 
 \section{Stabilita}
 
+Systém je stabilný pokiaľ sa po vychýlení z~rovnovážneho stavu a po odznení všetkých síl, ktoré toto vychýlenie spôsobili, vráti v~konečnom čase do pôvodného rovnovážneho stavu. Alebo pokiaľ sa vstup systému pohybuje v~konečných medziach daných systémom, výstup systému sa bude tiež pohybovať v~určitých konečných medziach.
 
 \subsection{Lineárny systém}
 \label{Stability.LinearSystem}
 
 Predpokladajme, že lineárny systém je opísateľný diferenciálnou rovnicou:
 \begin{equation}
+    \label{Stability.LinearSystem.Equation:LDE}
     y^{(n)} + a_{n - 1} y^{(n - 1)} + \cdots + a_{1} \dot{y} + a_{0} y = 0    
 \end{equation}
 kde $(n)$ označuje $n$-tú deriváciu podľa času. Všeobecné riešenie tejto rovnice je možné nájsť ako lineárnu kombináciu všetkých riešení v tvare:
@@ -134,7 +136,7 @@ kde $(n)$ označuje $n$-tú deriváciu podľa času. Všeobecné riešenie tejto
     y = 
     C_{1}(t) \exp(\lambda_{1} t) + C_{2}(t) \exp(\lambda_{2} t) + \cdots + C_{n}(t) \exp(\lambda_{n} t)
 \end{equation}
-kde $\lambda_{i}, \ i = 1, 2, \cdots, n$ sú vlastné čísla (vo všeobecnosti sú komplexné), získame ich z charakteristickej rovnice:
+kde $\lambda_{i}, \ i = 1, 2, \cdots, n$ sú vlastné čísla (vo všeobecnosti sú komplexné), získame ich z~charakteristickej rovnice diferenciálnej rovnice (\ref{Stability.LinearSystem.Equation:LDE}):
 \begin{equation}
     \lambda^{n} + a_{n - 1} \lambda^{n - 1} + \cdots + a_{1} \lambda + a_{0} = 0    
 \end{equation} 
