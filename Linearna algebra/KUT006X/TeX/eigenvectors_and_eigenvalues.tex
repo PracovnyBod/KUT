@@ -116,7 +116,7 @@ github.com/PracovnyBod/KUT
 \normalfont
 % -----------------------------------------------------------------------------
 
-\section{Vlastné vektory a vlastné hodnoty}
+\section{Vlastné vektory a vlastné čísla}
 \label{EigenvectorsEigenvalues}
 
 \begin{definition}[Vlastné čísla matice]
@@ -154,8 +154,8 @@ Vyriešením (\ref{EigenvectorsEigenvalues.Equation:Determinant}) teda môžeme 
         \begin{equation*}
             \bm{M} = 
             \begin{bmatrix}
-                \phantom{-}3 & 7 \\
-                          -4 & 1
+                4 & \phantom{-}7 \\
+                1 & -2
             \end{bmatrix}
         \end{equation*}
 
@@ -250,7 +250,7 @@ Vyriešením (\ref{EigenvectorsEigenvalues.Equation:Determinant}) teda môžeme 
         \end{equation*}
         
 
-        $\lambda = 5$:
+        $\lambda = -3$:
         \begin{align*}
             &\left( \bm{M} - \lambda \bm{I} \right) \bm{v} = 0 \ \thicksim \ 
             \begin{bmatrix}
@@ -294,18 +294,18 @@ Vyriešením (\ref{EigenvectorsEigenvalues.Equation:Determinant}) teda môžeme 
         \noindent Sústava rovníc má nekonečne veľa riešení, riešenie je parametrizované parametrom $t$, ktorý môže byť ľubovoľné reálne číslo okrem $0$.
         \begin{align*}
             &v_2 = t, \quad t \in \mathbb{R} \setminus \{0\} \\
-            &v_1 = v_2 = t \\
+            &v_1 = -v_2 = -t \\
         \end{align*}
          Vlastný vektor pre $\lambda = -3$ je napríklad:
         \begin{equation*}    
             \bm{v} = 
             \begin{bmatrix}
-                t \\
-                t
+                -t           \\
+                \phantom{-}t
             \end{bmatrix} = 
             \begin{bmatrix}
-                1 \\
-                1
+                -1 \\
+                \phantom{-}1
             \end{bmatrix}, \quad t = 1
         \end{equation*}
     \end{subequations}
