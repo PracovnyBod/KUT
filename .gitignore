@@ -7,6 +7,7 @@
 old
 dev
 
+KUT_dev
 
 
 .ipynb_checkpoints
@@ -28,7 +29,7 @@ dev
 *.run.xml
 *.bcf
 
-
+*.synctex.gz.sum.synctex
 
 
 slprj
