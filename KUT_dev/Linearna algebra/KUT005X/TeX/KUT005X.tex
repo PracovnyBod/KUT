@@ -1,0 +1,294 @@
+\documentclass[a4paper, 10pt, ]{article}
+
+\input{./COMMONFILES/preamble.tex}
+
+% -----------------------------------------------------------------------------
+
+\def\oznacenieCelku{Kolekcia učebných textov}
+
+% -----------------------------------------------------------------------------
+
+
+\def\KUTporadoveCislo{00X}
+
+\def\oznacenieVerzie{v0.9}
+% \def\oznacenieVerzie{\phantom{v1.0}}
+
+\def\mesiacRok{apríl 2024}
+
+\def\authorslabel{RM}
+
+
+
+
+
+% -----------------------------------------------------------------------------
+
+\begin{document}
+
+% -----------------------------------------------------------------------------
+% Uvodny nadpis
+
+\noindent
+\parbox[t][18mm][c]{0.3\textwidth}{%
+\raisebox{-0.9\height}{%
+\phantom{.}\includegraphics[height=18mm]{./COMMONFILES/URKFEIlogo.pdf}%
+}%
+}%
+\parbox[t][18mm][c]{0.7\textwidth}{%
+\raggedleft
+
+\sffamily
+\fontsize{16pt}{18pt}
+\fontseries{sbc}
+\selectfont
+
+\noindent
+\textcolor[rgb]{0.75, 0.75, 0.75}{\textls[25]{\oznacenieCelku}}
+}%
+
+\noindent
+\parbox[t][16mm][b]{0.5\textwidth}{%
+\raggedright
+
+\color{Gray}
+\sffamily
+
+\fontsize{12pt}{12pt}
+\selectfont
+\mesiacRok
+
+\fontsize{6pt}{10pt}
+\selectfont
+github.com/PracovnyBod/KUT
+
+\fontsize{8pt}{10pt}
+\selectfont
+\authorslabel
+
+
+
+
+}%
+\parbox[t][16mm][b]{0.5\textwidth}{%
+\raggedleft
+
+\sffamily
+
+\fontsize{6pt}{6pt}
+\selectfont
+
+\textcolor[rgb]{0.68, 0.68, 0.68}{\oznacenieVerzie}
+
+
+\fontsize{14pt}{14pt}
+\selectfont
+
+\bfseries
+
+\includegraphics[height=12pt]{./COMMONFILES/KUT_logo_v0.1.pdf}%
+{%
+\textls[-50]{\KUTporadoveCislo}
+}%
+}%
+
+% -----------------------------------------------------------------------------
+
+
+
+
+\vspace{6mm}
+
+% ---------------------------------------------
+\sffamily
+\bfseries
+\fontsize{18pt}{21pt}
+\selectfont
+
+\begin{flushleft}
+    O algebraických štruktúrach s dvomi binárnymi operáciami
+\end{flushleft}
+
+\bigskip
+
+% -----------------------------------------------------------------------------
+\normalsize
+\normalfont
+% -----------------------------------------------------------------------------
+
+
+
+\section{Algebraické štruktúry s dvomi binárnymi operáciami}
+\label{TwoBinaryOperationsStructures}
+
+Neskúsenejší čitateľ pravdepodobne po prečítaní pojmu lineárna algebra už radšej ďalej nepokračoval. Skúsenejší čitateľ sa už možno aj stretol s pojmami ako pole, teleso alebo okruh, avšak neprišlo mu jednoznačné prečo sú dané veci tak pomenované a na čo vlastne slúžia. Všetko sú to predsa pojmy z~abstraktnej matematiky, názvy teda niekedy treba brať s~nadhľadom.
+
+Gro abstraktnej matematiky spočíva v triedení - škatuľkovaní podľa určitých vlastností. Stanovíme si nejaké spoločné vlastnosti, ktoré sú spoločné pre skupinu objektov, tieto vlastnosti sa nazývajú axiómy. Pokiaľ teda niečo spĺňa všetky axiómy z nejakej skupiny, tak môžeme tvrdiť, že do tejto skupiny aj patrí - zaškatuľkujeme to. Z~týchto axiómov sú potom odvoditeľné lemmy a vety, ktoré sú používané v~iných odvetviach a~vieme, že pre všetky naše zaškatuľkované veci platia a sú teda použiteľné.
+
+Príklad lineárna kombinácia sa používa vo frekvenčnej analýze a~pri riešení lineárnych diferenciálnych rovníc, čiže v~podstate sa s~ňou stretávame neustále v~lineárnej teórii riadenia. Ďalším príkladom, môže byť stavová rovina, v~ktorej stavy sú vektory, na to, aby sme vedeli povedať čo je to vektor a~aké vlastnosti má potrebujeme definíciu vektorového priestoru.
+
+V tejto časti si uvedieme štruktúry, ktoré majú dve binárne operácie: operáciu súčtu $\oplus$ a~operáciiu násobenia $\odot$. Symboly pre operácie sú zámerne uvedené v krúžku, aby sme ich odlíšili od štandardne definovaného $+$ a $\cdot$, pretože dané operácie môžu byť definované podľa čitateľovej fantázie. Rovnako rozlišujeme špeciálnu nulu $\mathbb{0}$ a jednotku $\mathbb{1}$, ktoré tak isto nemusia zodpovedať svojím numerickým náprotivkom.
+
+\begin{definition}
+    \label{TwoBinaryOperationsStructures.Definition:TwoBinaryOperationsStructures}
+    Axiómy algebraických štruktúr s dvomi binárnymi operáciami $\oplus$ a $\odot$:
+    \begin{enumerate}\addtocounter{enumi}{-1}
+        \TabPositions{1cm}
+        \item Definujeme dve binárne operácie súčet $\oplus$ a násobenie $\odot$, na objekte $\mathbb{P}$ s prvkami $a, b$: \\
+        \tab\tab $\oplus: \ \mathbb{P}\times\mathbb{P} \owns \{a, b\} \ \rightarrow \ a \oplus b \in \mathbb{P}$ \tab\tab $\odot: \ \mathbb{P}\times\mathbb{P} \owns \{a, b\} \ \rightarrow \ a \odot b \in \mathbb{P}$
+
+        Z tohto axiómu vidíme, že pokiaľ vykonáme operáciu $\oplus$ alebo $\odot$, tak výsledok je stále z objektu $\mathbb{P}$.
+        
+        \item Operácia $\oplus$ je asociatívna: \\
+        \tab\tab $(a \oplus b) \oplus c = a \oplus (b \oplus c)$
+        
+        \item Existuje prvok identity $\mathbb{0}$ ("nulový prvok") pre operáciu $\oplus$: \\
+        \tab\tab $\exists \ \mathbb{0} \in \mathbb{P}: \ \mathbb{0} \oplus a = a \oplus \mathbb{0} = a$
+        
+        \item Pre každý prvok $a$ z $\mathbb{P}$ pre operáciu $\oplus$ xistuje inverzný prvok $-a$: \\
+        \tab\tab $\forall \ a \in \mathbb{P} \ \exists \ -a: \ a \oplus (-a) = \mathbb{0}$
+        
+        \item Operácia $\oplus$ je komutatívna: \\
+        \tab\tab $a \oplus b = b \oplus a$
+        
+        \item Distributívnosť operácie $\odot$ zľava: \\
+        \tab\tab $a \odot (b \oplus c) = (a \odot b) \oplus (a \odot c)$
+        
+        \item Distributívnosť operácie $\odot$ sprava: \\
+        \tab\tab $(b \oplus c) \odot a = (b \odot a) \oplus (c \odot a)$
+        
+        \item Operácia $\odot$ je asociatívna: \\
+        \tab\tab $(a \odot b) \odot c = a \odot (b \odot c)$
+
+        \item Existuje prvok identity $\mathbb{1}$ pre operáciu $\oplus$: \\
+        \tab\tab $\exists \ \mathbb{1} \in \mathbb{P}: \ \mathbb{1} \odot a = a \odot \mathbb{1} = a$
+
+        \item Pre každý prvok $a$ z $\mathbb{P}$ pre operáciu $\odot$ existuje inverzný prvok $a^{-1}$: \\
+        \tab\tab $\forall a \neq 0 \ \exists \ a^{-1}: \ a \odot a^{-1} = a^{-1} \odot a = \mathbb{1}$
+
+        \item Operácia $\odot$ je komutatívna: \\
+        \tab\tab $a \odot b = b \odot a$
+    \end{enumerate}
+\end{definition}
+
+Pokiaľ sú splnené axiómy (0)-(10) hovoríme o poli, pre (0)-(9) hovoríme o telese, pre (0)-(7) hovoríme o okruhu, pokiaľ pre okruh platí aj axióm (8), hovoríme o okruhu s~jednotkou. Príkladom poľa sú napríklad reálne a komplexné čísla, nechávame na čitateľovom zamyslení si dané tvrdenie overiť kontrolovou jednotlivých axiómov, ďalším zamyslením môže byť či aj celé čísla sú poľom. Nad poľom definujeme ďalší dôležitý pojem z lineárnej algebry - vektorový priestor.
+
+
+
+\section{Vektorový priestor}
+\label{VectorSpace}
+
+\begin{definition}[Vektorový priestor]
+    \label{VectorSpace.Definition:VectorSpace}
+    Vektorový priestor $V$ nad poľom $K$ je neprázdna množina s dvomi definovanými operáciami $\oplus: V \times V \rightarrow V$  a $\odot: K \times V \rightarrow V$, ktorá spĺňa nasledujúcich 8 axiómov:
+    \begin{enumerate}
+        \TabPositions{1cm}
+        \item Asociatívnosť: \\
+        \tab\tab $\bm{u} \oplus (\bm{v} \oplus \bm{w}) = (\bm{u} \oplus \bm{v}) \oplus \bm{w}, \quad \bm{u}, \bm{v}, \bm{w} \in V$
+        
+        \item Komutatívnosť: \\
+        \tab\tab $\bm{u} \oplus \bm{v} = \bm{v} \oplus \bm{u}, \quad \bm{u}, \bm{v} \in V$
+        
+        \item Prvok identity vektorového súčtu: \\
+        \tab\tab $\bm{u} \oplus \bm{0} = \bm{u}, \quad \bm{u}, \bm{0} \in V$
+        
+        \item Inverzný prvok: \\
+        \tab\tab $\bm{u} \oplus \bm{v} = \bm{0}, \quad \bm{u}, \bm{v}, \bm{0} \in V$
+        
+        \item Kompatibilita skalárneho násobenia s násobením poľa \\
+        \tab\tab $\alpha \odot (\beta \odot \bm{u}) = (\alpha \beta) \odot \bm{u}, \quad \alpha, \beta \in K, \quad \bm{u} \in V$
+        
+        \item Prvok identity skalárneho násobenia: \\
+        \tab\tab $\mathbb{1} \odot \bm{u} = \bm{u}, \quad \mathbb{1} \in K, \quad \bm{u} \in V$
+        
+        \item Distributívnosť vzhľadom na vektorový súčet: \\
+        \tab\tab $\alpha \odot (\bm{u} \oplus \bm{v}) = \alpha \odot \bm{u} \oplus \alpha \odot \bm{v}, \quad \alpha \in K, \quad \bm{u}, \bm{v} \in V$
+        
+        \item Distributívnosť vzhľadom na súčet poľa: \\
+        \tab\tab $(\alpha + \beta) \odot \bm{u} = \alpha \odot \bm{u} \oplus \beta \odot \bm{u}, \quad \alpha, \beta \in K, \quad \bm{u} \in V$
+    \end{enumerate}
+\end{definition}
+
+V definícii (\ref{VectorSpace.Definition:VectorSpace}) sme zámerne označili operácie $+$ a $\cdot$ v krúžku, aby sme ich rozlíšili od štandardne definovaného súčtu a súčinu, je možné ale používať aj označenie bez krúžku. Prvky $\bm{0}$ a $\mathbb{1}$ sú špeciálne a pre každý vektorový priestor originálne, nemusia nutne zodpovedať číselnej $0$ a $1$.
+
+\begin{example}
+    Vyšetrite či komplexné čísla $\bm{z} = \alpha + i \beta$ so štandardne definovanými operáciami $+, \cdot$ tvoria vektorový priestor $V$ nad reálnymi číslami $\mathbb{R}$, $\bm{z} \in V$, $\alpha, \beta \in \mathbb{R}$.
+
+    \begin{enumerate}
+        \item
+        \begin{align*}
+            \alpha_1 + i \beta_1 + (\alpha_2 + i \beta_2 + \alpha_3 + i \beta_3) &= 
+            \alpha_1 + i \beta_1 + (\alpha_2 + \alpha_3 + i (\beta_2 + \beta_3)) \\ &= 
+            \alpha_1 + \alpha_2 + \alpha_3 + i (\beta_1 + \beta_2 + \beta_3) \\ 
+            (\alpha_1 + i \beta_1 + \alpha_2 + i \beta_2) + \alpha_3 + i \beta_3 &= 
+            (\alpha_1 + \alpha_2 i (\beta_1 + \beta_2)) + \alpha_3 + i\beta_3 \\ &= 
+            \alpha_1 + \alpha_2 + \alpha_3 + i (\beta_1 + \beta_2 + \beta_3) 
+        \end{align*}
+        
+        \item
+        \begin{align*}
+            \alpha_1 + i \beta_1 + \alpha_2 + i \beta_2 &= 
+            \alpha_1 + \alpha_2 + i (\beta_1 + \beta_2) \\ 
+            \alpha_2 + i \beta_2 + \alpha_1 + i \beta_1&= 
+            \alpha_2 + \alpha_1 + i (\beta_2 + \beta_1) \\ &= 
+            \alpha_1 + \alpha_2 + i (\beta_1 + \beta_2) 
+        \end{align*}
+
+        \item
+        \begin{align*}
+            &\alpha + i \beta + o_r + i o_i = 
+            \alpha + i \beta \\ 
+            &\alpha + o_r = \alpha \ \Longrightarrow \ o_r = 0 \\
+            &\beta + o_i = \beta \ \Longrightarrow \ o_i = 0 \\
+            & \bm{0} = 0 + i0 
+        \end{align*}
+
+        \item
+        \begin{align*}
+            &\alpha_1 + i \beta_1 + \alpha_2 + i\beta_2 = 0 + i0 \\
+            &\alpha_1 + \alpha_2 = 0 \ \Longrightarrow \ \alpha_1 = -\alpha_2 \\
+            &\beta_1 + \beta_2 = 0 \ \Longrightarrow \ \beta_1 = -\beta_2 \\
+            & \bm{z} + (-\bm{z}) = \bm{0} 
+        \end{align*}
+
+        \item $\mu, \ \nu \in \mathbb{R}$
+        \begin{align*}
+            \mu (\nu (\alpha + i \beta)) &= \mu (\nu \alpha + i \nu \beta)) = \mu \nu \alpha + i \mu \nu \beta \\
+            (\mu \nu) (\alpha + i \beta) &= \mu \nu \alpha + i \mu \nu \beta \\
+        \end{align*}
+
+        \item
+        \begin{align*}
+            &\mathbb{1} \alpha + i \mathbb{1} \beta = \alpha + i \beta \\
+            &\mathbb{1} \alpha = \alpha \ \Longrightarrow \ \mathbb{1} = 1 \\
+            &\mathbb{1} \beta = \beta \ \Longrightarrow \ \mathbb{1} = 1 \\
+            &\mathbb{1} = 1 
+        \end{align*}
+
+        \item $\mu, \ \nu \in \mathbb{R}$
+        \begin{align*}
+            \mu (\alpha_1 + i \beta_1 + \alpha_2 + i\beta_2) &= 
+            \mu (\alpha_1 + \alpha_2 + i (\beta_1 + \beta_2)) \\ &= 
+            \mu(\alpha_1 + \alpha_2) + i \mu (\beta_1 + \beta_2) \\ & = 
+            \mu \alpha_1 + \mu \alpha_2 + i (\mu \beta_1 + \mu \beta_2) \\ 
+            \mu (\alpha_1 + i \beta_1) + \mu (\alpha_2 + i \beta_2) &= 
+            \mu \alpha_1 + i \mu \beta_1 + \mu \alpha_2 + i \mu \beta_2 \\ &=
+            \mu \alpha_1 + \mu \alpha_2 + i (\mu \beta_1 + \mu \beta_2)  
+        \end{align*}
+
+        \item $\mu, \ \nu \in \mathbb{R}$
+        \begin{align*}
+            (\mu + \nu) (\alpha + i \beta) &= 
+            (\mu + \nu) \alpha + i (\mu + \nu) \beta \\ &=
+            \mu \alpha + \nu \alpha + i (\mu \beta + \nu \beta) \\
+            \mu (\alpha + i \beta) + \nu (\alpha + i \beta) &= 
+            \mu \alpha + i \mu \beta + \nu \alpha + i \nu \beta \\ &=
+            \mu \alpha + \nu \alpha + i (\mu \beta + \nu \beta)  
+        \end{align*}
+    \end{enumerate}
+    Vidíme, že všetky axiómy sú splnené a môžeme teda tvrdiť, že komplexné čísla tvoria vektorový priestor nad reálnymi číslami.
+\end{example}
+
+
+
+\end{document}

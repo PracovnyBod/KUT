@@ -106,7 +106,7 @@ github.com/PracovnyBod/KUT
 \selectfont
 
 \begin{flushleft}
-    O vektorových priestoroch
+    O algebraických štruktúrach s dvomi binárnymi operáciami
 \end{flushleft}
 
 \bigskip
@@ -115,6 +115,65 @@ github.com/PracovnyBod/KUT
 \normalsize
 \normalfont
 % -----------------------------------------------------------------------------
+
+
+
+\section{Algebraické štruktúry s dvomi binárnymi operáciami}
+\label{TwoBinaryOperationsStructures}
+
+Neskúsenejší čitateľ pravdepodobne po prečítaní pojmu lineárna algebra už radšej ďalej nepokračoval. Skúsenejší čitateľ sa už možno aj stretol s pojmami ako pole, teleso alebo okruh, avšak neprišlo mu jednoznačné prečo sú dané veci tak pomenované a na čo vlastne slúžia. Všetko sú to predsa pojmy z~abstraktnej matematiky, názvy teda niekedy treba brať s~nadhľadom.
+
+Gro abstraktnej matematiky spočíva v triedení - škatuľkovaní podľa určitých vlastností. Stanovíme si nejaké spoločné vlastnosti, ktoré sú spoločné pre skupinu objektov, tieto vlastnosti sa nazývajú axiómy. Pokiaľ teda niečo spĺňa všetky axiómy z nejakej skupiny, tak môžeme tvrdiť, že do tejto skupiny aj patrí - zaškatuľkujeme to. Z~týchto axiómov sú potom odvoditeľné lemmy a vety, ktoré sú používané v~iných odvetviach a~vieme, že pre všetky naše zaškatuľkované veci platia a sú teda použiteľné.
+
+Príklad lineárna kombinácia sa používa vo frekvenčnej analýze a~pri riešení lineárnych diferenciálnych rovníc, čiže v~podstate sa s~ňou stretávame neustále v~lineárnej teórii riadenia. Ďalším príkladom, môže byť stavová rovina, v~ktorej stavy sú vektory, na to, aby sme vedeli povedať čo je to vektor a~aké vlastnosti má potrebujeme definíciu vektorového priestoru.
+
+V tejto časti si uvedieme štruktúry, ktoré majú dve binárne operácie: operáciu súčtu $\oplus$ a~operáciiu násobenia $\odot$. Symboly pre operácie sú zámerne uvedené v krúžku, aby sme ich odlíšili od štandardne definovaného $+$ a $\cdot$, pretože dané operácie môžu byť definované podľa čitateľovej fantázie. Rovnako rozlišujeme špeciálnu nulu $\mathbb{0}$ a jednotku $\mathbb{1}$, ktoré tak isto nemusia zodpovedať svojím numerickým náprotivkom.
+
+\begin{definition}
+    \label{TwoBinaryOperationsStructures.Definition:TwoBinaryOperationsStructures}
+    Axiómy algebraických štruktúr s dvomi binárnymi operáciami $\oplus$ a $\odot$:
+    \begin{enumerate}\addtocounter{enumi}{-1}
+        \TabPositions{1cm}
+        \item Definujeme dve binárne operácie súčet $\oplus$ a násobenie $\odot$, na objekte $\mathbb{P}$ s prvkami $a, b$: \\
+        \tab\tab $\oplus: \ \mathbb{P}\times\mathbb{P} \owns \{a, b\} \ \rightarrow \ a \oplus b \in \mathbb{P}$ \tab\tab $\odot: \ \mathbb{P}\times\mathbb{P} \owns \{a, b\} \ \rightarrow \ a \odot b \in \mathbb{P}$
+
+        Z tohto axiómu vidíme, že pokiaľ vykonáme operáciu $\oplus$ alebo $\odot$, tak výsledok je stále z objektu $\mathbb{P}$.
+        
+        \item Operácia $\oplus$ je asociatívna: \\
+        \tab\tab $(a \oplus b) \oplus c = a \oplus (b \oplus c)$
+        
+        \item Existuje prvok identity $\mathbb{0}$ ("nulový prvok") pre operáciu $\oplus$: \\
+        \tab\tab $\exists \ \mathbb{0} \in \mathbb{P}: \ \mathbb{0} \oplus a = a \oplus \mathbb{0} = a$
+        
+        \item Pre každý prvok $a$ z $\mathbb{P}$ pre operáciu $\oplus$ xistuje inverzný prvok $-a$: \\
+        \tab\tab $\forall \ a \in \mathbb{P} \ \exists \ -a: \ a \oplus (-a) = \mathbb{0}$
+        
+        \item Operácia $\oplus$ je komutatívna: \\
+        \tab\tab $a \oplus b = b \oplus a$
+        
+        \item Distributívnosť operácie $\odot$ zľava: \\
+        \tab\tab $a \odot (b \oplus c) = (a \odot b) \oplus (a \odot c)$
+        
+        \item Distributívnosť operácie $\odot$ sprava: \\
+        \tab\tab $(b \oplus c) \odot a = (b \odot a) \oplus (c \odot a)$
+        
+        \item Operácia $\odot$ je asociatívna: \\
+        \tab\tab $(a \odot b) \odot c = a \odot (b \odot c)$
+
+        \item Existuje prvok identity $\mathbb{1}$ pre operáciu $\oplus$: \\
+        \tab\tab $\exists \ \mathbb{1} \in \mathbb{P}: \ \mathbb{1} \odot a = a \odot \mathbb{1} = a$
+
+        \item Pre každý prvok $a$ z $\mathbb{P}$ pre operáciu $\odot$ existuje inverzný prvok $a^{-1}$: \\
+        \tab\tab $\forall a \neq 0 \ \exists \ a^{-1}: \ a \odot a^{-1} = a^{-1} \odot a = \mathbb{1}$
+
+        \item Operácia $\odot$ je komutatívna: \\
+        \tab\tab $a \odot b = b \odot a$
+    \end{enumerate}
+\end{definition}
+
+Pokiaľ sú splnené axiómy (0)-(10) hovoríme o poli, pre (0)-(9) hovoríme o telese, pre (0)-(7) hovoríme o okruhu, pokiaľ pre okruh platí aj axióm (8), hovoríme o okruhu s~jednotkou. Príkladom poľa sú napríklad reálne a komplexné čísla, nechávame na čitateľovom zamyslení si dané tvrdenie overiť kontrolovou jednotlivých axiómov, ďalším zamyslením môže byť či aj celé čísla sú poľom. Nad poľom definujeme ďalší dôležitý pojem z lineárnej algebry - vektorový priestor.
+
+
 
 \section{Vektorový priestor}
 \label{VectorSpace}
